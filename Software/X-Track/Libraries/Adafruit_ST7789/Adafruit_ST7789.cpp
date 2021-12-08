@@ -95,74 +95,242 @@ void Adafruit_ST7789::begin()
     writeCommand(0x11); //Sleep out
     delay(120);
 
-    setRotation(0);
+    //setRotation(0);
 
-    writeCommand(0x3A);
-    writeData(0x05);
+    writeCommand(0xfe);
+		writeCommand(0xef);
+    
+		writeCommand(0xeb);
+		writeData(0x14);
 
-    writeCommand(0xB2);
-    writeData(0x0C);
-    writeData(0x0C);
-    writeData(0x00);
-    writeData(0x33);
-    writeData(0x33);
+    writeCommand(0x84);
+    writeData(0x40);
+		
+		writeCommand(0x85);
+    writeData(0xff);
+		
+		writeCommand(0x86);
+		writeData(0xff);
+		
+	writeCommand(0x87);			
+	writeData(0xFF);
+	writeCommand(0x8E);			
+	writeData(0xFF); 
 
-    writeCommand(0xB7);
-    writeData(0x35);
+	writeCommand(0x8F);			
+	writeData(0xFF); 
 
-    writeCommand(0xBB);
-    writeData(0x32); //Vcom=1.35V
+	writeCommand(0x88);			
+	writeData(0x0A);
 
-    writeCommand(0xC2);
-    writeData(0x01);
+	writeCommand(0x89);			
+	writeData(0x21); //2data: 0x23    1data: 0x21
 
-    writeCommand(0xC3);
-    writeData(0x15); //GVDD=4.8V
+	writeCommand(0x8A);			
+	writeData(0x00); 
 
-    writeCommand(0xC4);
-    writeData(0x20); //VDV, 0x20:0v
+	writeCommand(0x8B);			
+	writeData(0x80); 
 
-    writeCommand(0xC6);
-    writeData(0x0F); //0x0F:60Hz
+	writeCommand(0x8C);			
+	writeData(0x01); 
 
-    writeCommand(0xD0);
-    writeData(0xA4);
-    writeData(0xA1);
+	writeCommand(0x8D);			
+	writeData(0x01); 
 
-    writeCommand(0xE0);
-    writeData(0xD0);
-    writeData(0x08);
-    writeData(0x0E);
-    writeData(0x09);
-    writeData(0x09);
-    writeData(0x05);
-    writeData(0x31);
-    writeData(0x33);
-    writeData(0x48);
-    writeData(0x17);
-    writeData(0x14);
-    writeData(0x15);
-    writeData(0x31);
-    writeData(0x34);
+  writeCommand(0xB6);//FS			
+  writeData(0x00); //FS
+  writeData(0x60); //FS
 
-    writeCommand(0xE1);
-    writeData(0xD0);
-    writeData(0x08);
-    writeData(0x0E);
-    writeData(0x09);
-    writeData(0x09);
-    writeData(0x15);
-    writeData(0x31);
-    writeData(0x33);
-    writeData(0x48);
-    writeData(0x17);
-    writeData(0x14);
-    writeData(0x15);
-    writeData(0x31);
-    writeData(0x34);
-    writeCommand(0x21);
+	writeCommand(0x36);			
+	writeData(0x48);//88
 
-    writeCommand(0x29);
+	writeCommand(0x3A);			
+	writeData(0x05); 
+
+
+	writeCommand(0x90);			
+	writeData(0x08);
+	writeData(0x08);
+	writeData(0x08);
+	writeData(0x08); 
+
+	writeCommand(0xBD);			
+	writeData(0x06);
+	
+	writeCommand(0xBC);			
+	writeData(0x00);	
+
+	writeCommand(0xFF);			
+	writeData(0x60);
+	writeData(0x01);
+	writeData(0x04);
+
+	writeCommand(0xC3);			
+	writeData(0x13);
+	writeCommand(0xC4);			
+	writeData(0x13);
+
+	writeCommand(0xC9);			
+	writeData(0x22);
+
+	writeCommand(0xBE);			
+	writeData(0x11); 
+
+	writeCommand(0xE1);			
+	writeData(0x10);
+	writeData(0x0E);
+
+	writeCommand(0xDF);			
+	writeData(0x21);
+	writeData(0x0c);
+	writeData(0x02);
+
+	writeCommand(0xF0);   
+  writeData(0x45);
+  writeData(0x09);
+  writeData(0x08);
+  writeData(0x08);
+  writeData(0x26);
+ 	writeData(0x2A);
+
+ 	writeCommand(0xF1);    
+ 	writeData(0x43);
+ 	writeData(0x70);
+ 	writeData(0x72);
+ 	writeData(0x36);
+ 	writeData(0x37);  
+ 	writeData(0x6F);
+
+
+ 	writeCommand(0xF2);   
+ 	writeData(0x45);
+ 	writeData(0x09);
+ 	writeData(0x08);
+ 	writeData(0x08);
+ 	writeData(0x26);
+ 	writeData(0x2A);
+
+ 	writeCommand(0xF3);   
+ 	writeData(0x43);
+ 	writeData(0x70);
+ 	writeData(0x72);
+ 	writeData(0x36);
+ 	writeData(0x37); 
+ 	writeData(0x6F);
+
+	writeCommand(0xED);	
+	writeData(0x1B); 
+	writeData(0x0B); 
+
+	writeCommand(0xAE);			
+	writeData(0x77);
+	
+	writeCommand(0xCD);			
+	writeData(0x63);		
+
+
+	writeCommand(0x70);			
+	writeData(0x07);
+	writeData(0x07);
+	writeData(0x04);
+	writeData(0x0E); 
+	writeData(0x0F); 
+	writeData(0x09);
+	writeData(0x07);
+	writeData(0x08);
+	writeData(0x03);
+
+	writeCommand(0xE8);			
+	writeData(0x34);
+
+	writeCommand(0x62);			
+	writeData(0x18);
+	writeData(0x0D);
+	writeData(0x71);
+	writeData(0xED);
+	writeData(0x70); 
+	writeData(0x70);
+	writeData(0x18);
+	writeData(0x0F);
+	writeData(0x71);
+	writeData(0xEF);
+	writeData(0x70); 
+	writeData(0x70);
+
+	writeCommand(0x63);			
+	writeData(0x18);
+	writeData(0x11);
+	writeData(0x71);
+	writeData(0xF1);
+	writeData(0x70); 
+	writeData(0x70);
+	writeData(0x18);
+	writeData(0x13);
+	writeData(0x71);
+	writeData(0xF3);
+	writeData(0x70); 
+	writeData(0x70);
+
+	writeCommand(0x64);			
+	writeData(0x28);
+	writeData(0x29);
+	writeData(0xF1);
+	writeData(0x01);
+	writeData(0xF1);
+	writeData(0x00);
+	writeData(0x07);
+       
+  writeCommand(0x66); //FS
+	writeData(0x3C);
+	writeData(0x00);
+	writeData(0x98);
+	writeData(0x10);
+	writeData(0x32);
+	writeData(0x45);
+	writeData(0x01);
+	writeData(0x00);
+	writeData(0x00);
+	writeData(0x00);
+
+	writeCommand(0x67);
+	writeData(0x00);
+	writeData(0x3C);
+	writeData(0x00);
+	writeData(0x00);
+	writeData(0x00);
+	writeData(0x10);
+	writeData(0x54);
+	writeData(0x67);
+	writeData(0x45);
+	writeData(0xcd);//FS
+             
+
+	writeCommand(0x74);			
+	writeData(0x10);	
+	writeData(0x85);	
+	writeData(0x80);
+	writeData(0x00); 
+	writeData(0x00); 
+	writeData(0x4E);
+	writeData(0x00);					
+	
+  writeCommand(0x98);			
+	writeData(0x3e);
+	writeData(0x07);
+
+
+
+	writeCommand(0x35);	
+  writeData(0x00); 
+	writeCommand(0x21);
+	delay(120);
+		
+	writeCommand(0x11);
+	delay(120);
+	writeCommand(0x29);
+	delay(120);
+	//writeCommand(0x2C);		
 }
 
 void Adafruit_ST7789::spiWrite(uint8_t data)

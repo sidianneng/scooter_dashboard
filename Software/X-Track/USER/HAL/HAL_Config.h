@@ -38,9 +38,9 @@
 #define NULL_PIN                    PD0
 
 /* Screen */
-#define CONFIG_SCREEN_CS_PIN        PB0
-#define CONFIG_SCREEN_DC_PIN        PA4
-#define CONFIG_SCREEN_RST_PIN       PA6
+#define CONFIG_SCREEN_CS_PIN        PA4
+#define CONFIG_SCREEN_DC_PIN        PA6
+#define CONFIG_SCREEN_RST_PIN       PB0
 #define CONFIG_SCREEN_SCK_PIN       PA5
 #define CONFIG_SCREEN_MOSI_PIN      PA7
 #define CONFIG_SCREEN_BLK_PIN       PB1  // TIM3

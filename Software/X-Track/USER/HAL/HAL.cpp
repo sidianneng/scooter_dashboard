@@ -62,16 +62,16 @@ void HAL::HAL_Init()
 
     Memory_DumpInfo();
 
-    Power_Init();
+    //Power_Init();
     Backlight_Init();
-    Encoder_Init();
-    Clock_Init();
-    Buzz_init();
-    GPS_Init();
+    //Encoder_Init();
+    //Clock_Init();
+    //Buzz_init();
+    //GPS_Init();
 #if CONFIG_SENSOR_ENABLE
     HAL_Sensor_Init();
 #endif
-    Audio_Init();
+    //Audio_Init();
     SD_Init();
 
     Display_Init();

@@ -21,7 +21,7 @@ void HAL::Backlight_Init()
 {
     /*PWM初始化，1000级，20KHz频率*/
     PWM_Init(CONFIG_SCREEN_BLK_PIN, 1000, 20000);
-    Backlight_SetValue(0);
+    Backlight_SetValue(1000);
 }
 
 /**
