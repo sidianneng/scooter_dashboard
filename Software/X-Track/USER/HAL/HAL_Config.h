@@ -76,6 +76,10 @@
 #define CONFIG_ENCODER_A_PIN        PB4
 #define CONFIG_ENCODER_PUSH_PIN     PB3
 
+/* Encoder */
+#define CONFIG_TOUCH_PANEL_RST_PIN  PB11
+#define CONFIG_TOUCH_PANEL_INT_PIN  PB10
+
 /* Power */
 #define CONFIG_POWER_EN_PIN         PA12
 #define CONFIG_POWER_WAIT_TIME      1000

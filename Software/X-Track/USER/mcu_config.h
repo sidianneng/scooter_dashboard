@@ -61,7 +61,7 @@
 #define WIRE_USE_FULL_SPEED_I2C             0
 #define WIRE_SDA_PIN                        PB7
 #define WIRE_SCL_PIN                        PB6
-#define WIRE_DELAY                          0
+#define WIRE_DELAY                          5
 #define WIRE_BEGIN_TIMEOUT                  100 // ms
 #define WIRE_BUFF_SIZE                      32
 

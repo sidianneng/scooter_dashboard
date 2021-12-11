@@ -2839,6 +2839,11 @@
               <FileType>8</FileType>
               <FilePath>..\USER\HAL\rt_sys.cpp</FilePath>
             </File>
+            <File>
+              <FileName>HAL_TouchPanel.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\USER\HAL\HAL_TouchPanel.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3592,6 +3597,11 @@
               <FileName>StackInfo.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Libraries\StackInfo\StackInfo.c</FilePath>
+            </File>
+            <File>
+              <FileName>FT3267.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Libraries\FT3267\FT3267.cpp</FilePath>
             </File>
           </Files>
         </Group>

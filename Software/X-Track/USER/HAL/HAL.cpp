@@ -72,8 +72,9 @@ void HAL::HAL_Init()
     HAL_Sensor_Init();
 #endif
     //Audio_Init();
-    SD_Init();
+    //SD_Init();
 
+		TouchPanel_Init();
     Display_Init();
     
     taskManager.Register(Power_EventMonitor, 100);

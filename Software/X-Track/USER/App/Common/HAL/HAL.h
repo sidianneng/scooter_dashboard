@@ -112,6 +112,10 @@ int32_t Encoder_GetDiff();
 bool Encoder_GetIsPush();
 void Encoder_SetEnable(bool en);
 
+/* Touch Panel */
+void TouchPanel_Init();
+void TouchPanel_GetPoint(uint16_t* pos_x, uint16_t* pos_y);
+
 /* Audio */
 void Audio_Init();
 void Audio_Update();

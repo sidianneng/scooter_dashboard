@@ -28,6 +28,8 @@
 static void encoder_init(void);
 static void encoder_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
 
+static void tp_encoder_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data);
+
 /**********************
  *  STATIC VARIABLES
  **********************/
@@ -53,8 +55,13 @@ void lv_port_indev_init(void)
 
     /*Register a encoder input device*/
     lv_indev_drv_init(&indev_drv);
+#if 0
     indev_drv.type = LV_INDEV_TYPE_ENCODER;
     indev_drv.read_cb = encoder_read;
+#else
+    indev_drv.type = LV_INDEV_TYPE_POINTER;
+    indev_drv.read_cb = tp_encoder_read;
+#endif
     lv_indev_t* indev = lv_indev_drv_register(&indev_drv);
     
     lv_group_t* group = lv_group_create();
@@ -96,6 +103,17 @@ static void encoder_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
         HAL::Buzz_Tone(isPush ? 500 : 700, 20);
         lastState = isPush;
     }
+}
+
+static void tp_encoder_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
+{
+    uint16_t x, y;
+
+    HAL::TouchPanel_GetPoint(&x, &y);
+
+    data->point.x = x;
+    data->point.y = y;
+
 }
 
 #else /* Enable this file at the top */
