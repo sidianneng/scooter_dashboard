@@ -1,12 +1,12 @@
-#ifndef __TEMPLATE_VIEW_H
-#define __TEMPLATE_VIEW_H
+#ifndef __SCOOTERPANEL_VIEW_H
+#define __SCOOTERPANEL_VIEW_H
 
 #include "../Page.h"
 
 namespace Page
 {
 
-class TemplateView
+class ScooterPanelView
 {
 public:
     void Create(lv_obj_t* root);

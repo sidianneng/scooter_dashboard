@@ -1,12 +1,12 @@
-#ifndef __TEMPLATE_MODEL_H
-#define __TEMPLATE_MODEL_H
+#ifndef __SCOOTERPANEL_MODEL_H
+#define __SCOOTERPANEL_MODEL_H
 
 #include "lvgl/lvgl.h"
 
 namespace Page
 {
 
-class TemplateModel
+class ScooterPanelModels
 {
 public:
     uint32_t TickSave;

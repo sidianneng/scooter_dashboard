@@ -1,8 +1,8 @@
-#include "TemplateModel.h"
+#include "ScooterPanelModel.h"
 
 using namespace Page;
 
-uint32_t TemplateModel::GetData()
+uint32_t ScooterPanelModel::GetData()
 {
     return lv_tick_get();
 }

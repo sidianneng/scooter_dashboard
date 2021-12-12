@@ -4,7 +4,7 @@
 
 using namespace Page;
 
-void TemplateView::Create(lv_obj_t* root)
+void ScooterPanelView::Create(lv_obj_t* root)
 {
     lv_obj_t* label = lv_label_create(root);
     lv_obj_align(label, LV_ALIGN_TOP_MID, 0, 20);

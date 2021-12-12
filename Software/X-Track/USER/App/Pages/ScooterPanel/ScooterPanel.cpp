@@ -1,24 +1,24 @@
-#include "Template.h"
+#include "ScooterPanel.h"
 
 using namespace Page;
 
-Template::Template()
+ScooterPanel::ScooterPanel()
     : timer(nullptr)
 {
 }
 
-Template::~Template()
+ScooterPanel::~ScooterPanel()
 {
 
 }
 
-void Template::onCustomAttrConfig()
+void ScooterPanel::onCustomAttrConfig()
 {
     SetCustomCacheEnable(true);
     SetCustomLoadAnimType(PageManager::LOAD_ANIM_OVER_BOTTOM, 1000, lv_anim_path_bounce);
 }
 
-void Template::onViewLoad()
+void ScooterPanel::onViewLoad()
 {
     View.Create(root);
     lv_label_set_text(View.ui.labelTitle, Name);
@@ -28,12 +28,12 @@ void Template::onViewLoad()
     Model.TickSave = Model.GetData();
 }
 
-void Template::onViewDidLoad()
+void ScooterPanel::onViewDidLoad()
 {
 
 }
 
-void Template::onViewWillAppear()
+void ScooterPanel::onViewWillAppear()
 {
     Param_t param;
     param.color = lv_color_white();
@@ -45,47 +45,47 @@ void Template::onViewWillAppear()
     timer = lv_timer_create(onTimerUpdate, param.time, this);
 }
 
-void Template::onViewDidAppear()
+void ScooterPanel::onViewDidAppear()
 {
 
 }
 
-void Template::onViewWillDisappear()
+void ScooterPanel::onViewWillDisappear()
 {
 
 }
 
-void Template::onViewDidDisappear()
+void ScooterPanel::onViewDidDisappear()
 {
     lv_timer_del(timer);
 }
 
-void Template::onViewDidUnload()
+void ScooterPanel::onViewDidUnload()
 {
 
 }
 
-void Template::AttachEvent(lv_obj_t* obj)
+void ScooterPanel::AttachEvent(lv_obj_t* obj)
 {
     lv_obj_set_user_data(obj, this);
     lv_obj_add_event_cb(obj, onEvent, LV_EVENT_ALL, this);
 }
 
-void Template::Update()
+void ScooterPanel::Update()
 {
     lv_label_set_text_fmt(View.ui.labelTick, "tick = %d save = %d", Model.GetData(), Model.TickSave);
 }
 
-void Template::onTimerUpdate(lv_timer_t* timer)
+void ScooterPanel::onTimerUpdate(lv_timer_t* timer)
 {
-    Template* instance = (Template*)timer->user_data;
+    ScooterPanel* instance = (ScooterPanel*)timer->user_data;
 
     instance->Update();
 }
 
-void Template::onEvent(lv_event_t* event)
+void ScooterPanel::onEvent(lv_event_t* event)
 {
-    Template* instance = (Template*)lv_event_get_user_data(event);
+    ScooterPanel* instance = (ScooterPanel*)lv_event_get_user_data(event);
     LV_ASSERT_NULL(instance);
 
     lv_obj_t* obj = lv_event_get_target(event);

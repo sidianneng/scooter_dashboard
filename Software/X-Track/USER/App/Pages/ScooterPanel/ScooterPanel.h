@@ -1,13 +1,13 @@
-#ifndef __TEMPLATE_PRESENTER_H
-#define __TEMPLATE_PRESENTER_H
+#ifndef __SCOOTERPANEL_PRESENTER_H
+#define __SCOOTERPANEL_PRESENTER_H
 
-#include "TemplateView.h"
-#include "TemplateModel.h"
+#include "ScooterPanelView.h"
+#include "ScooterPanelModel.h"
 
 namespace Page
 {
 
-class Template : public PageBase
+class ScooterPanel : public PageBase
 {
 public:
     typedef struct
@@ -36,8 +36,8 @@ private:
     static void onEvent(lv_event_t* event);
 
 private:
-    TemplateView View;
-    TemplateModel Model;
+    ScooterPanelView View;
+    ScooterPanelModel Model;
     lv_timer_t* timer;
 };
 
