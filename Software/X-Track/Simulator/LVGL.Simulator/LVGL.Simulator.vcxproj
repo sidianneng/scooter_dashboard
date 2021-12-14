@@ -86,6 +86,9 @@
     <ClInclude Include="..\..\USER\App\Pages\LiveMap\LiveMapModel.h" />
     <ClInclude Include="..\..\USER\App\Pages\LiveMap\LiveMapView.h" />
     <ClInclude Include="..\..\USER\App\Pages\Page.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanel.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelModel.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelView.h" />
     <ClInclude Include="..\..\USER\App\Pages\Startup\Startup.h" />
     <ClInclude Include="..\..\USER\App\Pages\Startup\StartupModel.h" />
     <ClInclude Include="..\..\USER\App\Pages\Startup\StartupView.h" />
@@ -289,6 +292,9 @@
     <ClCompile Include="..\..\USER\App\Pages\LiveMap\LiveMap.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\LiveMap\LiveMapModel.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\LiveMap\LiveMapView.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanel.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelModel.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelView.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\Startup\Startup.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\Startup\StartupModel.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\Startup\StartupView.cpp" />

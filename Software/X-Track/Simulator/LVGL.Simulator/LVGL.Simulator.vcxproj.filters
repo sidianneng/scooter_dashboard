@@ -397,6 +397,9 @@
     <Filter Include="App\Utils\lv_poly_line">
       <UniqueIdentifier>{a01b3944-3a79-4911-a5b1-805a4b2a2977}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\Pages\ScooterPanel">
+      <UniqueIdentifier>{880e7697-688b-4434-aeef-b6be2e288a50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lvgl\examples\get_started\lv_example_get_started.h">
@@ -986,6 +989,15 @@
     </ClInclude>
     <ClInclude Include="..\..\USER\App\Utils\lv_poly_line\lv_poly_line.h">
       <Filter>App\Utils\lv_poly_line</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanel.h">
+      <Filter>App\Pages\ScooterPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelModel.h">
+      <Filter>App\Pages\ScooterPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelView.h">
+      <Filter>App\Pages\ScooterPanel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1990,6 +2002,15 @@
     </ClCompile>
     <ClCompile Include="..\..\USER\App\Utils\lv_poly_line\lv_poly_line.cpp">
       <Filter>App\Utils\lv_poly_line</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanel.cpp">
+      <Filter>App\Pages\ScooterPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelModel.cpp">
+      <Filter>App\Pages\ScooterPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelView.cpp">
+      <Filter>App\Pages\ScooterPanel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

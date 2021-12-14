@@ -26,6 +26,7 @@
 #include "Dialplate/Dialplate.h"
 #include "SystemInfos/SystemInfos.h"
 #include "Startup/Startup.h"
+#include "ScooterPanel/ScooterPanel.h"
 
 #define APP_CLASS_MATCH(className)\
 do{\
@@ -37,11 +38,12 @@ do{\
 
 PageBase* AppFactory::CreatePage(const char* name)
 {
-    APP_CLASS_MATCH(Template);
-    APP_CLASS_MATCH(LiveMap);
-    APP_CLASS_MATCH(Dialplate);
-    APP_CLASS_MATCH(SystemInfos);
-    APP_CLASS_MATCH(Startup);
+    //APP_CLASS_MATCH(Template);
+    //APP_CLASS_MATCH(LiveMap);
+    //APP_CLASS_MATCH(Dialplate);
+    //APP_CLASS_MATCH(SystemInfos);
+    //APP_CLASS_MATCH(Startup);
+    APP_CLASS_MATCH(ScooterPanel);
 
     return nullptr;
 }

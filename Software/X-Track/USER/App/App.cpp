@@ -78,15 +78,16 @@ void App_Init()
 
     StatusBar::Init(lv_layer_top());
 
-    manager.Install("Template",    "Pages/_Template");
-    manager.Install("LiveMap",     "Pages/LiveMap");
-    manager.Install("Dialplate",   "Pages/Dialplate");
-    manager.Install("SystemInfos", "Pages/SystemInfos");
-    manager.Install("Startup",     "Pages/Startup");
+    //manager.Install("Template",    "Pages/_Template");
+    //manager.Install("LiveMap",     "Pages/LiveMap");
+    //manager.Install("Dialplate",   "Pages/Dialplate");
+    //manager.Install("SystemInfos", "Pages/SystemInfos");
+    //manager.Install("Startup",     "Pages/Startup");
+    manager.Install("Startup",     "Pages/ScooterPanel");
 
     manager.SetGlobalLoadAnimType(PageManager::LOAD_ANIM_OVER_TOP, 500);
 
-    manager.Push("Pages/Startup");
+    manager.Push("Pages/ScooterPanel");
 }
 
 void App_Uninit()
