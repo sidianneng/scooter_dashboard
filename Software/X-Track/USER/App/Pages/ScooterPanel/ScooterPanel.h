@@ -17,8 +17,8 @@ public:
     } Param_t;
 
 public:
-    Template();
-    virtual ~Template();
+    ScooterPanel();
+    virtual ~ScooterPanel();
 
     virtual void onCustomAttrConfig();
     virtual void onViewLoad();

@@ -6,7 +6,7 @@
 namespace Page
 {
 
-class ScooterPanelModels
+class ScooterPanelModel
 {
 public:
     uint32_t TickSave;
