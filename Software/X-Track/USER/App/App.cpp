@@ -72,7 +72,7 @@ void App_Init()
     lv_obj_t* scr = lv_scr_act();
     lv_obj_remove_style_all(scr);
     lv_obj_clear_flag(scr, LV_OBJ_FLAG_SCROLLABLE);
-    lv_disp_set_bg_color(lv_disp_get_default(), lv_color_black());
+    lv_disp_set_bg_color(lv_disp_get_default(), lv_color_white());
 
     ResourcePool::Init();
 
@@ -83,7 +83,7 @@ void App_Init()
     //manager.Install("Dialplate",   "Pages/Dialplate");
     //manager.Install("SystemInfos", "Pages/SystemInfos");
     //manager.Install("Startup",     "Pages/Startup");
-    manager.Install("Startup",     "Pages/ScooterPanel");
+    manager.Install("ScooterPanel",     "Pages/ScooterPanel");
 
     manager.SetGlobalLoadAnimType(PageManager::LOAD_ANIM_OVER_TOP, 500);
 
