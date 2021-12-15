@@ -15,13 +15,13 @@ ScooterPanel::~ScooterPanel()
 void ScooterPanel::onCustomAttrConfig()
 {
     SetCustomCacheEnable(true);
-    SetCustomLoadAnimType(PageManager::LOAD_ANIM_OVER_BOTTOM, 1000, lv_anim_path_bounce);
+    SetCustomLoadAnimType(PageManager::LOAD_ANIM_NONE, 1000, lv_anim_path_bounce);
 }
 
 void ScooterPanel::onViewLoad()
 {
     View.Create(root);
-    lv_label_set_text(View.ui.labelTitle, Name);
+    //lv_label_set_text(View.ui.labelTitle, Name);
 
     AttachEvent(root);
 
@@ -73,7 +73,7 @@ void ScooterPanel::AttachEvent(lv_obj_t* obj)
 
 void ScooterPanel::Update()
 {
-    lv_label_set_text_fmt(View.ui.labelTick, "tick = %d save = %d", Model.GetData(), Model.TickSave);
+    //lv_label_set_text_fmt(View.ui.labelTick, "tick = %d save = %d", Model.GetData(), Model.TickSave);
 }
 
 void ScooterPanel::onTimerUpdate(lv_timer_t* timer)

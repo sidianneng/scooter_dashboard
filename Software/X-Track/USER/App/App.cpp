@@ -85,7 +85,7 @@ void App_Init()
     //manager.Install("Startup",     "Pages/Startup");
     manager.Install("ScooterPanel",     "Pages/ScooterPanel");
 
-    manager.SetGlobalLoadAnimType(PageManager::LOAD_ANIM_OVER_TOP, 500);
+    manager.SetGlobalLoadAnimType(PageManager::LOAD_ANIM_NONE, 500);
 
     manager.Push("Pages/ScooterPanel");
 }
