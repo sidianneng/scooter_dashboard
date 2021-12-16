@@ -55,7 +55,7 @@ void lv_port_indev_init(void)
 
     /*Register a encoder input device*/
     lv_indev_drv_init(&indev_drv);
-#if 0
+#if 1
     indev_drv.type = LV_INDEV_TYPE_ENCODER;
     indev_drv.read_cb = encoder_read;
 #else
