@@ -143,10 +143,10 @@ void Adafruit_ST7789::begin()
   writeData(0x60); //FS
 
 	writeCommand(0x36);			
-	writeData(0x80);//88
+	writeData(0x88);//88
 
 	writeCommand(0x3A);			
-	writeData(0x05); 
+	writeData(0x55); 
 
 
 	writeCommand(0x90);			
