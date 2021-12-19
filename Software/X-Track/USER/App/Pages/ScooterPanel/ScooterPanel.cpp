@@ -67,7 +67,7 @@ void ScooterPanel::onViewDidUnload()
 
 void ScooterPanel::AttachEvent(lv_obj_t* obj)
 {
-    lv_obj_set_user_data(obj, this);
+    //lv_obj_set_user_data(obj, this);
     lv_obj_add_event_cb(obj, onEvent, LV_EVENT_ALL, this);
 }
 
@@ -91,11 +91,21 @@ void ScooterPanel::onEvent(lv_event_t* event)
     lv_obj_t* obj = lv_event_get_target(event);
     lv_event_code_t code = lv_event_get_code(event);
 
-    if (obj == instance->root)
+    if (code == LV_EVENT_SHORT_CLICKED)
     {
-        if (code == LV_EVENT_SHORT_CLICKED || code == LV_EVENT_LEAVE)
-        {
-            instance->Manager->Pop();
+        printf("scooterpanel clicked");
+    }
+
+    if (code == LV_EVENT_GESTURE)
+    {
+        lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
+        printf("scooterlock gesture 0x%x 0x%x\n", dir, lv_scr_act()->flags);
+        if (dir == LV_DIR_LEFT) {
+            instance->Manager->Push("Pages/ScooterLock");
+        }
+        else if (dir == LV_DIR_RIGHT) {
+            lv_scr_act()->flags |= LV_OBJ_FLAG_USER_1;
+            instance->Manager->Push("Pages/ScooterSetting");
         }
     }
 }

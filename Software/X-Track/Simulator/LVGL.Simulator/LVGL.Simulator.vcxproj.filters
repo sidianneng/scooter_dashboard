@@ -400,6 +400,15 @@
     <Filter Include="App\Pages\ScooterPanel">
       <UniqueIdentifier>{880e7697-688b-4434-aeef-b6be2e288a50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\Pages\ScooterLock">
+      <UniqueIdentifier>{8f89c166-57a7-44e8-9294-ae3e8417f1a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\Pages\ScooterSysinfo">
+      <UniqueIdentifier>{e5f9bf62-3cca-436b-93db-3040f3e81ec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\Pages\ScooterSetting">
+      <UniqueIdentifier>{5bea5e99-194e-40b2-b6ca-eeda2a39f5a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lvgl\examples\get_started\lv_example_get_started.h">
@@ -998,6 +1007,33 @@
     </ClInclude>
     <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelView.h">
       <Filter>App\Pages\ScooterPanel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterLock\ScooterLock.h">
+      <Filter>App\Pages\ScooterLock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterLock\ScooterLockModel.h">
+      <Filter>App\Pages\ScooterLock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterLock\ScooterLockView.h">
+      <Filter>App\Pages\ScooterLock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterSysinfo\ScooterSysinfo.h">
+      <Filter>App\Pages\ScooterSysinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterSysinfo\ScooterSysinfoModel.h">
+      <Filter>App\Pages\ScooterSysinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterSysinfo\ScooterSysinfoView.h">
+      <Filter>App\Pages\ScooterSysinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterSetting\ScooterSetting.h">
+      <Filter>App\Pages\ScooterSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterSetting\ScooterSettingModel.h">
+      <Filter>App\Pages\ScooterSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterSetting\ScooterSettingView.h">
+      <Filter>App\Pages\ScooterSetting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -2011,6 +2047,33 @@
     </ClCompile>
     <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelView.cpp">
       <Filter>App\Pages\ScooterPanel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterLock\ScooterLock.cpp">
+      <Filter>App\Pages\ScooterLock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterLock\ScooterLockModel.cpp">
+      <Filter>App\Pages\ScooterLock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterLock\ScooterLockView.cpp">
+      <Filter>App\Pages\ScooterLock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterSysinfo\ScooterSysinfo.cpp">
+      <Filter>App\Pages\ScooterSysinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterSysinfo\ScooterSysinfoModel.cpp">
+      <Filter>App\Pages\ScooterSysinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterSysinfo\ScooterSysinfoView.cpp">
+      <Filter>App\Pages\ScooterSysinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterSetting\ScooterSetting.cpp">
+      <Filter>App\Pages\ScooterSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterSetting\ScooterSettingModel.cpp">
+      <Filter>App\Pages\ScooterSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterSetting\ScooterSettingView.cpp">
+      <Filter>App\Pages\ScooterSetting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
