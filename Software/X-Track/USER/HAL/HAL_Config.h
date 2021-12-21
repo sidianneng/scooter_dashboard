@@ -68,8 +68,8 @@
 #define CONFIG_IMU_INT2_PIN         PB11
 
 /* I2C */
-#define CONFIG_MCU_SDA_PIN          PB7
-#define CONFIG_MCU_SDL_PIN          PB6
+#define CONFIG_MCU_SDA_PIN          PB9//PB7
+#define CONFIG_MCU_SDL_PIN          PB8//PB6
 
 /* Encoder */
 #define CONFIG_ENCODER_B_PIN        PB5
