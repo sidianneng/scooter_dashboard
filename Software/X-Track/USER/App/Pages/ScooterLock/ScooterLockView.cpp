@@ -7,7 +7,11 @@ using namespace Page;
 void ScooterLockView::Create(lv_obj_t* root)
 {
     lv_obj_remove_style_all(root);
+
     lv_obj_set_size(root, LV_HOR_RES, LV_VER_RES);
+    lv_obj_center(root);
+    lv_obj_set_style_radius(root, LV_RADIUS_CIRCLE, 0);
+
     lv_obj_set_style_bg_color(root, lv_color_black(), 0);
     lv_obj_set_style_bg_opa(root, LV_OPA_COVER, 0);
     lv_obj_set_style_pad_ver(root, 70, 0);

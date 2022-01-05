@@ -14,7 +14,12 @@ void ScooterPanelView::PanelInfo_Create(lv_obj_t* par)
 {
     lv_obj_t* cont = lv_obj_create(par);
     lv_obj_remove_style_all(cont);
-    lv_obj_set_size(cont, LV_HOR_RES, 180);
+
+    lv_obj_set_size(cont, 240, 240);
+    lv_obj_center(cont);
+    lv_obj_set_style_radius(cont, LV_RADIUS_CIRCLE, 0);
+
+    //lv_obj_set_size(cont, LV_HOR_RES, 180);
 
     lv_obj_set_style_bg_opa(cont, LV_OPA_COVER, 0);
     lv_obj_set_style_bg_color(cont, lv_color_hex(0x333333), 0);
