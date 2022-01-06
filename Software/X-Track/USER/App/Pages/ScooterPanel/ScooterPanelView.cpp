@@ -26,11 +26,11 @@ void ScooterPanelView::PanelInfo_Create(lv_obj_t* par)
 
     //speed number
     lv_obj_t* label = lv_label_create(cont);
-    lv_obj_set_style_text_font(label, ResourcePool::GetFont("bahnschrift_65"), 0);
+    lv_obj_set_style_text_font(label, ResourcePool::GetFont("bahnschrift_72"), 0);
     lv_obj_set_style_text_color(label, lv_color_white(), 0);
-    lv_label_set_text(label, "01");
+    lv_label_set_text(label, "88");
     lv_obj_align(label, LV_ALIGN_TOP_MID, 0, 53);
-
+#if 0
     //battery capacity
     lv_obj_t* label_capicity = lv_label_create(cont);
     lv_obj_set_style_text_font(label_capicity, ResourcePool::GetFont("bahnschrift_32"), 0);
@@ -65,7 +65,7 @@ void ScooterPanelView::PanelInfo_Create(lv_obj_t* par)
     lv_obj_set_style_text_color(label_mode, lv_color_white(), 0);
     lv_label_set_text(label_mode, "4");
     lv_obj_align(label_mode, LV_ALIGN_TOP_MID, 100, 133);
-
+#endif
     ui.panelInfo.cont = cont;
 }
 
@@ -76,7 +76,7 @@ void ScooterPanelView::Button_Create(lv_obj_t* par)
     lv_obj_set_size(cont, LV_HOR_RES, 60);
     lv_obj_align_to(cont, ui.panelInfo.cont, LV_ALIGN_OUT_BOTTOM_MID, 0, 0);
 
-    ui.btnCont.btnPower = Btn_Create(cont, ResourcePool::GetImage("start"), 0);
+    //ui.btnCont.btnPower = Btn_Create(cont, ResourcePool::GetImage("start"), 0);
 }
 
 lv_obj_t* ScooterPanelView::Btn_Create(lv_obj_t* par, const void* img_src, lv_coord_t x_ofs)

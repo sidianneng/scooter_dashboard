@@ -25,6 +25,7 @@ do{\
         IMPORT_FONT(bahnschrift_32);
         IMPORT_FONT(bahnschrift_65);
         IMPORT_FONT(agencyb_36);
+        IMPORT_FONT(bahnschrift_72);
 
         /* Import Images */
         IMPORT_IMG(alarm);

@@ -328,6 +328,7 @@
     <ClCompile Include="..\..\USER\App\Resource\Font\font_bahnschrift_17.c" />
     <ClCompile Include="..\..\USER\App\Resource\Font\font_bahnschrift_32.c" />
     <ClCompile Include="..\..\USER\App\Resource\Font\font_bahnschrift_65.c" />
+    <ClCompile Include="..\..\USER\App\Resource\Font\font_bahnschrift_72.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_alarm.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_battery.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_battery_info.c" />
