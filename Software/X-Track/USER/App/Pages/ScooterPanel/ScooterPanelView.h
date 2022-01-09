@@ -23,9 +23,19 @@ public:
             lv_obj_t* labelBluetooth;
             lv_obj_t* labelWrench;
             lv_obj_t* labelTemperature;
-            lv_obj_t* labelSportMode;
+            lv_obj_t* labelSptMode_b;
+            lv_obj_t* labelSptMode_r;
 
-            lv_obj_t* labelBatCapacity;
+            lv_obj_t* labelBat1;
+            lv_obj_t* labelBat2;
+            lv_obj_t* labelBat3;
+            lv_obj_t* labelBat4;
+            lv_obj_t* labelBat5;
+
+            lv_obj_t* labelCharging;
+
+            lv_obj_t* labelKmh;
+            lv_obj_t* labelMph;
         } panelInfo;
 
         struct
@@ -39,6 +49,7 @@ private:
     void PanelInfo_Create(lv_obj_t* par);
     void Button_Create(lv_obj_t* par);
     lv_obj_t* Btn_Create(lv_obj_t* par, const void* img_src, lv_coord_t x_ofs);
+    lv_obj_t* Icon_Create(lv_obj_t* par, const void* img_src, lv_coord_t x_ofs, lv_coord_t y_ofs);
 
 };
 

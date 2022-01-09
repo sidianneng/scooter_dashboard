@@ -6,66 +6,56 @@ using namespace Page;
 
 void ScooterPanelView::Create(lv_obj_t* root)
 {
-    PanelInfo_Create(root);
-    Button_Create(root);
+    lv_obj_t* cont = lv_obj_create(root);
+    lv_obj_remove_style_all(cont);
+
+    //draw the circle panel
+    lv_obj_set_size(cont, 240, 240);
+    lv_obj_center(cont);
+    lv_obj_set_style_radius(cont, LV_RADIUS_CIRCLE, 0);
+
+    lv_obj_set_style_bg_opa(cont, LV_OPA_COVER, 0);
+    lv_obj_set_style_bg_color(cont, lv_color_hex(0x000000), 0);
+
+    //create items
+    PanelInfo_Create(cont);
+    //Button_Create(root);
 }
 
 void ScooterPanelView::PanelInfo_Create(lv_obj_t* par)
 {
     lv_obj_t* cont = lv_obj_create(par);
-    lv_obj_remove_style_all(cont);
-
-    lv_obj_set_size(cont, 240, 240);
     lv_obj_center(cont);
-    lv_obj_set_style_radius(cont, LV_RADIUS_CIRCLE, 0);
-
-    //lv_obj_set_size(cont, LV_HOR_RES, 180);
-
-    lv_obj_set_style_bg_opa(cont, LV_OPA_COVER, 0);
-    lv_obj_set_style_bg_color(cont, lv_color_hex(0x333333), 0);
+    lv_obj_set_size(cont, LV_HOR_RES, 180);
 
     //speed number
     lv_obj_t* label = lv_label_create(cont);
     lv_obj_set_style_text_font(label, ResourcePool::GetFont("bahnschrift_72"), 0);
     lv_obj_set_style_text_color(label, lv_color_white(), 0);
     lv_label_set_text(label, "88");
-    lv_obj_align(label, LV_ALIGN_TOP_MID, 0, 53);
-#if 0
-    //battery capacity
-    lv_obj_t* label_capicity = lv_label_create(cont);
-    lv_obj_set_style_text_font(label_capicity, ResourcePool::GetFont("bahnschrift_32"), 0);
-    lv_obj_set_style_text_color(label_capicity, lv_color_white(), 0);
-    lv_label_set_text(label_capicity, "99");
-    lv_obj_align(label_capicity, LV_ALIGN_TOP_MID, 0, 133);
+    lv_obj_align(label, LV_ALIGN_TOP_MID, 0, 30);
 
-    //bluetooth
-    lv_obj_t* label_ble = lv_label_create(cont);
-    lv_obj_set_style_text_font(label_ble, ResourcePool::GetFont("bahnschrift_32"), 0);
-    lv_obj_set_style_text_color(label_ble, lv_color_white(), 0);
-    lv_label_set_text(label_ble, "1");
-    lv_obj_align(label_ble, LV_ALIGN_TOP_MID, -100, 133);
+    //draw all the icons
+    ui.panelInfo.labelBat1 = Icon_Create(cont, ResourcePool::GetImage("battery1"), -90, 23);
+    ui.panelInfo.labelBat2 = Icon_Create(cont, ResourcePool::GetImage("battery2"), -50, 25);
+    ui.panelInfo.labelBat3 = Icon_Create(cont, ResourcePool::GetImage("battery3"), -10, 25);
+    ui.panelInfo.labelBat4 = Icon_Create(cont, ResourcePool::GetImage("battery4"), 30, 25);
+    ui.panelInfo.labelBat5 = Icon_Create(cont, ResourcePool::GetImage("battery5"), 70, 25);
 
-    //needfix
-    lv_obj_t* label_fix = lv_label_create(cont);
-    lv_obj_set_style_text_font(label_fix, ResourcePool::GetFont("bahnschrift_32"), 0);
-    lv_obj_set_style_text_color(label_fix, lv_color_white(), 0);
-    lv_label_set_text(label_fix, "2");
-    lv_obj_align(label_fix, LV_ALIGN_TOP_MID, -70, 53);
+    ui.panelInfo.labelCharging = Icon_Create(cont, ResourcePool::GetImage("charging"), 100, 20);
 
-    //temperate icon
-    lv_obj_t* label_temp = lv_label_create(cont);
-    lv_obj_set_style_text_font(label_temp, ResourcePool::GetFont("bahnschrift_32"), 0);
-    lv_obj_set_style_text_color(label_temp, lv_color_white(), 0);
-    lv_label_set_text(label_temp, "3");
-    lv_obj_align(label_temp, LV_ALIGN_TOP_MID, 70, 53);
+    ui.panelInfo.labelBluetooth = Icon_Create(cont, ResourcePool::GetImage("bluetooth"), -80, -20);
 
-    //sport mode
-    lv_obj_t* label_mode = lv_label_create(cont);
-    lv_obj_set_style_text_font(label_mode, ResourcePool::GetFont("bahnschrift_32"), 0);
-    lv_obj_set_style_text_color(label_mode, lv_color_white(), 0);
-    lv_label_set_text(label_mode, "4");
-    lv_obj_align(label_mode, LV_ALIGN_TOP_MID, 100, 133);
-#endif
+    ui.panelInfo.labelWrench = Icon_Create(cont, ResourcePool::GetImage("wrench"), -80, -60);
+
+    ui.panelInfo.labelTemperature = Icon_Create(cont, ResourcePool::GetImage("temperature"), 65, -60);
+
+    ui.panelInfo.labelSptMode_r = Icon_Create(cont, ResourcePool::GetImage("sptmode_r"), 80, -30);
+
+    ui.panelInfo.labelKmh = Icon_Create(cont, ResourcePool::GetImage("kmh"), 80, -10);
+
+    ui.panelInfo.labelMph = Icon_Create(cont, ResourcePool::GetImage("mph"), 65, 5);
+
     ui.panelInfo.cont = cont;
 }
 
@@ -76,7 +66,7 @@ void ScooterPanelView::Button_Create(lv_obj_t* par)
     lv_obj_set_size(cont, LV_HOR_RES, 60);
     lv_obj_align_to(cont, ui.panelInfo.cont, LV_ALIGN_OUT_BOTTOM_MID, 0, 0);
 
-    //ui.btnCont.btnPower = Btn_Create(cont, ResourcePool::GetImage("start"), 0);
+    ui.btnCont.btnPower = Btn_Create(cont, ResourcePool::GetImage("start"), 0);
 }
 
 lv_obj_t* ScooterPanelView::Btn_Create(lv_obj_t* par, const void* img_src, lv_coord_t x_ofs)
@@ -110,6 +100,16 @@ lv_obj_t* ScooterPanelView::Btn_Create(lv_obj_t* par, const void* img_src, lv_co
     lv_obj_set_style_transition(obj, &tran, LV_STATE_FOCUSED);
 
     lv_obj_update_layout(obj);
+
+    return obj;
+}
+
+lv_obj_t* ScooterPanelView::Icon_Create(lv_obj_t* par, const void* img_src, lv_coord_t x_ofs, lv_coord_t y_ofs)
+{
+    lv_obj_t* obj = lv_obj_create(par);
+
+    lv_obj_align(obj, LV_ALIGN_CENTER, x_ofs, y_ofs);
+    lv_obj_set_style_bg_img_src(obj, img_src, 0);
 
     return obj;
 }

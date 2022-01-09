@@ -51,6 +51,19 @@ do{\
         IMPORT_IMG(system_info);
         IMPORT_IMG(time_info);
         IMPORT_IMG(trip);
+        IMPORT_IMG(battery1);
+        IMPORT_IMG(battery2);
+        IMPORT_IMG(battery3);
+        IMPORT_IMG(battery4);
+        IMPORT_IMG(battery5);
+        IMPORT_IMG(charging);
+        IMPORT_IMG(bluetooth);
+        IMPORT_IMG(wrench);
+        IMPORT_IMG(temperature);
+        IMPORT_IMG(sptmode_b);
+        IMPORT_IMG(sptmode_r);
+        IMPORT_IMG(kmh);
+        IMPORT_IMG(mph);
     }
 
 } /* extern "C" */
