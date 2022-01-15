@@ -64,6 +64,8 @@ do{\
         IMPORT_IMG(sptmode_r);
         IMPORT_IMG(kmh);
         IMPORT_IMG(mph);
+        IMPORT_IMG(lock);
+        IMPORT_IMG(unlock);
     }
 
 } /* extern "C" */

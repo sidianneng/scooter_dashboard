@@ -348,6 +348,7 @@
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_gyroscope.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_kmh.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_locate.c" />
+    <ClCompile Include="..\..\USER\App\Resource\Image\img_src_lock.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_map_location.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_menu.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_mph.c" />
@@ -364,6 +365,7 @@
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_temperature.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_time_info.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_trip.c" />
+    <ClCompile Include="..\..\USER\App\Resource\Image\img_src_unlock.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_wrench.c" />
     <ClCompile Include="..\..\USER\App\Resource\ResourcePool.cpp" />
     <ClCompile Include="..\..\USER\App\Utils\DataCenter\Account.cpp" />

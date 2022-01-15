@@ -14,11 +14,14 @@ public:
 public:
     struct
     {
-
+        lv_obj_t* cont;
+        lv_obj_t* LockIcon;
+        lv_obj_t* UnLockIcon;
     } ui;
 
 private:
-
+    void BtnCont_Create(lv_obj_t* par);
+    lv_obj_t* Btn_Create(lv_obj_t* par, const void* img_src, lv_coord_t x_ofs);
 };
 
 }

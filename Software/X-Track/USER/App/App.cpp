@@ -90,7 +90,7 @@ void App_Init()
 
     manager.SetGlobalLoadAnimType(PageManager::LOAD_ANIM_NONE, 500);
 
-    manager.Push("Pages/ScooterPanel");
+    manager.Push("Pages/ScooterLock");
 }
 
 void App_Uninit()

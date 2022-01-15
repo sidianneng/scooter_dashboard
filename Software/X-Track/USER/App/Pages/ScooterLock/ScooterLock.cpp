@@ -24,6 +24,7 @@ void ScooterLock::onViewLoad()
     //lv_label_set_text(View.ui.labelTitle, Name);
 
     AttachEvent(root);
+    AttachEvent(View.ui.LockIcon);
 
     Model.TickSave = Model.GetData();
 }
@@ -83,6 +84,11 @@ void ScooterLock::onTimerUpdate(lv_timer_t* timer)
     instance->Update();
 }
 
+void ScooterLock::SetBtnRecImgSrc(const char* srcName)
+{
+    lv_obj_set_style_bg_img_src(View.ui.LockIcon, ResourcePool::GetImage(srcName), 0);
+}
+
 void ScooterLock::onEvent(lv_event_t* event)
 {
     ScooterLock* instance = (ScooterLock*)lv_event_get_user_data(event);
@@ -115,6 +121,27 @@ void ScooterLock::onEvent(lv_event_t* event)
                 else if (dir == LV_DIR_LEFT) {
                     instance->Manager->Push("Pages/ScooterSysinfo");
                 }
+            }
+        }
+    }
+
+    if (obj == instance->View.ui.LockIcon)
+    {
+        if (code == LV_EVENT_SHORT_CLICKED)
+        {
+            printf("scooter short pressed!\n");
+        }
+        if (code == LV_EVENT_LONG_PRESSED)
+        {
+            if (!instance->locked) {
+                printf("lock the scooter now\n");
+                instance->SetBtnRecImgSrc("lock");
+                instance->locked = true;
+            }
+            else {
+                printf("unlock the scooter now\n");
+                instance->SetBtnRecImgSrc("unlock");
+                instance->locked = false;
             }
         }
     }
