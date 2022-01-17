@@ -30,6 +30,7 @@
 #include "ScooterLock/ScooterLock.h"
 #include "ScooterSysinfo/ScooterSysinfo.h"
 #include "ScooterSetting/ScooterSetting.h"
+#include "ScooterPwd/ScooterPwd.h"
 
 #define APP_CLASS_MATCH(className)\
 do{\
@@ -50,6 +51,7 @@ PageBase* AppFactory::CreatePage(const char* name)
     APP_CLASS_MATCH(ScooterLock);
     APP_CLASS_MATCH(ScooterSysinfo);
     APP_CLASS_MATCH(ScooterSetting);
+    APP_CLASS_MATCH(ScooterPwd);
 
     return nullptr;
 }

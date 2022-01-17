@@ -92,6 +92,9 @@
     <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanel.h" />
     <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelModel.h" />
     <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelView.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwd.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdModel.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdView.h" />
     <ClInclude Include="..\..\USER\App\Pages\ScooterSetting\ScooterSetting.h" />
     <ClInclude Include="..\..\USER\App\Pages\ScooterSetting\ScooterSettingModel.h" />
     <ClInclude Include="..\..\USER\App\Pages\ScooterSetting\ScooterSettingView.h" />
@@ -307,6 +310,9 @@
     <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanel.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelModel.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelView.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwd.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdModel.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdView.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\ScooterSetting\ScooterSetting.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\ScooterSetting\ScooterSettingModel.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\ScooterSetting\ScooterSettingView.cpp" />

@@ -127,10 +127,6 @@ void ScooterLock::onEvent(lv_event_t* event)
 
     if (obj == instance->View.ui.LockIcon)
     {
-        if (code == LV_EVENT_SHORT_CLICKED)
-        {
-            printf("scooter short pressed!\n");
-        }
         if (code == LV_EVENT_LONG_PRESSED)
         {
             if (!instance->locked) {
@@ -142,6 +138,7 @@ void ScooterLock::onEvent(lv_event_t* event)
                 printf("unlock the scooter now\n");
                 instance->SetBtnRecImgSrc("unlock");
                 instance->locked = false;
+                instance->Manager->Push("Pages/ScooterPwd");
             }
         }
     }

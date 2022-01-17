@@ -409,6 +409,9 @@
     <Filter Include="App\Pages\ScooterSetting">
       <UniqueIdentifier>{5bea5e99-194e-40b2-b6ca-eeda2a39f5a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\Pages\ScooterPwd">
+      <UniqueIdentifier>{3e07fcb1-7588-4670-9f61-e7764eee6c56}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lvgl\examples\get_started\lv_example_get_started.h">
@@ -1034,6 +1037,15 @@
     </ClInclude>
     <ClInclude Include="..\..\USER\App\Pages\ScooterSetting\ScooterSettingView.h">
       <Filter>App\Pages\ScooterSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwd.h">
+      <Filter>App\Pages\ScooterPwd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdModel.h">
+      <Filter>App\Pages\ScooterPwd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdView.h">
+      <Filter>App\Pages\ScooterPwd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -2122,6 +2134,15 @@
     </ClCompile>
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_unlock.c">
       <Filter>App\Resource\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwd.cpp">
+      <Filter>App\Pages\ScooterPwd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdModel.cpp">
+      <Filter>App\Pages\ScooterPwd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdView.cpp">
+      <Filter>App\Pages\ScooterPwd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
