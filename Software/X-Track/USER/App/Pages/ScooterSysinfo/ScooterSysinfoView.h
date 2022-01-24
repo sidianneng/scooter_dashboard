@@ -10,15 +10,18 @@ class ScooterSysinfoView
 {
 public:
     void Create(lv_obj_t* root);
-
 public:
     struct
     {
-
+        lv_obj_t* cont;
+        lv_obj_t* remainMile;
+        lv_obj_t* remainBat;
+        lv_obj_t* totalMile;
     } ui;
 
 private:
-
+    lv_obj_t* Info_Create(lv_obj_t* obj,
+        const char* labelText, lv_coord_t x_ofs, lv_coord_t y_ofs);
 };
 
 }

@@ -6,21 +6,43 @@ using namespace Page;
 
 void ScooterSysinfoView::Create(lv_obj_t* root)
 {
-    lv_obj_remove_style_all(root);
+    lv_obj_t* cont = lv_obj_create(root);
+    lv_obj_remove_style_all(cont);
+    lv_obj_set_size(cont, LV_HOR_RES, LV_VER_RES);
     
-    lv_obj_set_size(root, LV_HOR_RES, LV_VER_RES);
-    lv_obj_center(root);
-    lv_obj_set_style_radius(root, LV_RADIUS_CIRCLE, 0);
+    //draw the circle panel
+    lv_obj_center(cont);
+    lv_obj_set_style_radius(cont, LV_RADIUS_CIRCLE, 0);
+    lv_obj_set_style_bg_opa(cont, LV_OPA_COVER, 0);
+    lv_obj_set_style_bg_color(cont, lv_color_hex(0x000000), 0);
 
-    lv_obj_set_style_bg_color(root, lv_color_black(), 0);
-    lv_obj_set_style_bg_opa(root, LV_OPA_COVER, 0);
-    lv_obj_set_style_pad_ver(root, 70, 0);
+    ui.remainMile = Info_Create(cont, "12.0Km/h", -60, -60);
+    ui.remainBat  = Info_Create(cont, "78%", 60, -60);
+    ui.totalMile  = Info_Create(cont, "1234Km", 0, 60);
+}
 
-    lv_obj_t* label = lv_label_create(root);
-    lv_obj_remove_style_all(label);
-    lv_obj_set_style_text_font(label, ResourcePool::GetFont("bahnschrift_17"), 0);
-    lv_obj_set_style_text_color(label, lv_color_make(0xff, 0x00, 0x00), 0);
-    lv_label_set_text(label, "2systeminfo");
-    lv_obj_align(label, LV_ALIGN_TOP_MID, 0, 53);
+lv_obj_t* ScooterSysinfoView::Info_Create(lv_obj_t* obj,
+    const char* labelText, lv_coord_t x_ofs, lv_coord_t y_ofs)
+{
+    lv_obj_t* cont = lv_obj_create(obj);
+    lv_obj_remove_style_all(cont);
+    lv_obj_set_style_bg_opa(cont, LV_OPA_COVER, 0);
+    lv_obj_set_style_bg_color(cont, lv_color_hex(0x000000), 0);
+    lv_obj_set_size(cont, 50, 25);
 
+    lv_obj_set_flex_flow(cont, LV_FLEX_FLOW_COLUMN);
+    lv_obj_set_flex_align(
+        cont,
+        LV_FLEX_ALIGN_SPACE_AROUND,
+        LV_FLEX_ALIGN_CENTER,
+        LV_FLEX_ALIGN_CENTER
+    );
+
+    lv_obj_t* label = lv_label_create(cont);
+    lv_obj_align(cont, LV_ALIGN_CENTER, x_ofs, y_ofs);
+    lv_obj_set_style_text_font(label, ResourcePool::GetFont("bahnschrift_13"), 0);
+    lv_obj_set_style_text_color(label, lv_color_hex(0xffffff), 0);
+    lv_label_set_text(label, labelText);
+
+    return label;
 }
