@@ -82,6 +82,11 @@ void FT3267::TP_Get_Position(uint16_t* pos_x, uint16_t* pos_y)
 #endif
 }
 
+uint8_t FT3267::Get_Num_of_Point(void)
+{
+	return (ReadReg(FT3267_TD_STATUS) & 0x0f);
+}
+
 void FT3267::WriteReg(uint8_t reg, uint8_t data)
 {
     Wire.beginTransmission(Address);

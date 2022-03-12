@@ -68,17 +68,17 @@
 #define CONFIG_IMU_INT2_PIN         PB11
 
 /* I2C */
-#define CONFIG_MCU_SDA_PIN          PB9//PB7
-#define CONFIG_MCU_SDL_PIN          PB8//PB6
+#define CONFIG_MCU_SDA_PIN          PB7
+#define CONFIG_MCU_SDL_PIN          PB6
 
 /* Encoder */
 #define CONFIG_ENCODER_B_PIN        PB5
 #define CONFIG_ENCODER_A_PIN        PB4
 #define CONFIG_ENCODER_PUSH_PIN     PB3
 
-/* Encoder */
-#define CONFIG_TOUCH_PANEL_RST_PIN  PB11
-#define CONFIG_TOUCH_PANEL_INT_PIN  PB10
+/* Touch Panel */
+#define CONFIG_TOUCH_PANEL_RST_PIN  PA1
+#define CONFIG_TOUCH_PANEL_INT_PIN  PA0
 
 /* Power */
 #define CONFIG_POWER_EN_PIN         PA12

@@ -16,6 +16,8 @@ public:
 
     void TP_Get_Position(uint16_t* pos_x, uint16_t* pos_y);
 
+		uint8_t Get_Num_of_Point(void);
+
 private:
     uint8_t Address;
     void WriteReg(uint8_t reg, uint8_t dat);

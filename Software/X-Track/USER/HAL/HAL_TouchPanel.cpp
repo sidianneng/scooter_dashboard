@@ -19,3 +19,8 @@ void HAL::TouchPanel_GetPoint(uint16_t* pos_x, uint16_t* pos_y)
 {
     touch_panel.TP_Get_Position(pos_x, pos_y);
 }
+
+bool HAL::TouchPanel_GetIsPush()
+{
+		return (touch_panel.Get_Num_of_Point() > 0 ? true : false);
+}

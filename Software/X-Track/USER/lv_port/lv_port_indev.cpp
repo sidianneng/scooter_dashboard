@@ -55,9 +55,9 @@ void lv_port_indev_init(void)
 
     /*Register a encoder input device*/
     lv_indev_drv_init(&indev_drv);
-#if 1
-    //indev_drv.type = LV_INDEV_TYPE_ENCODER;
-    //indev_drv.read_cb = encoder_read;
+#if 0
+    indev_drv.type = LV_INDEV_TYPE_ENCODER;
+    indev_drv.read_cb = encoder_read;
 #else
     indev_drv.type = LV_INDEV_TYPE_POINTER;
     indev_drv.read_cb = tp_encoder_read;
@@ -109,10 +109,18 @@ static void tp_encoder_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
 {
     uint16_t x, y;
 
-    HAL::TouchPanel_GetPoint(&x, &y);
+		bool isPush = HAL::TouchPanel_GetIsPush();
+		
+		if(isPush) {
+			HAL::TouchPanel_GetPoint(&x, &y);
 
-    data->point.x = x;
-    data->point.y = y;
+			//because of the lcd rotation, we need to adjust the data of 
+			//touch panel point.
+			data->point.x = y;
+			data->point.y = 240 - x;
+		}
+		
+		data->state = isPush ? LV_INDEV_STATE_PRESSED : LV_INDEV_STATE_RELEASED;
 
 }
 

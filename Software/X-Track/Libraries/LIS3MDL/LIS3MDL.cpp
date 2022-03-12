@@ -155,7 +155,8 @@ void LIS3MDL::read()
     Wire.requestFrom(address, (uint8_t)6);
 
     uint16_t millis_start = millis();
-    while (Wire.available() < 6)
+    //while (Wire.available() < 6)
+		while(0)
     {
         if (io_timeout > 0 && ((uint16_t)millis() - millis_start) > io_timeout)
         {

@@ -115,6 +115,7 @@ void Encoder_SetEnable(bool en);
 /* Touch Panel */
 void TouchPanel_Init();
 void TouchPanel_GetPoint(uint16_t* pos_x, uint16_t* pos_y);
+bool TouchPanel_GetIsPush();
 
 /* Audio */
 void Audio_Init();

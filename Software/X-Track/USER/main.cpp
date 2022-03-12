@@ -40,7 +40,6 @@ static void setup()
 
 static void loop()
 {
-    //Serial.print("x");
     HAL::HAL_Update();
     lv_task_handler();
     __wfi();
