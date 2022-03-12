@@ -93,13 +93,13 @@ void ScooterPanel::onEvent(lv_event_t* event)
 
     if (code == LV_EVENT_SHORT_CLICKED)
     {
-        printf("scooterpanel clicked");
+        //printf("scooterpanel clicked");
     }
 
     if (code == LV_EVENT_GESTURE)
     {
         lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-        printf("scooterlock gesture 0x%x 0x%x\n", dir, lv_scr_act()->flags);
+        //printf("scooterlock gesture 0x%x 0x%x\n", dir, lv_scr_act()->flags);
         if (dir == LV_DIR_LEFT) {
             instance->Manager->Push("Pages/ScooterLock");
         }

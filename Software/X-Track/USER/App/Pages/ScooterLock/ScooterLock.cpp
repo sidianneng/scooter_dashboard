@@ -102,7 +102,7 @@ void ScooterLock::onEvent(lv_event_t* event)
         if (code == LV_EVENT_GESTURE)
         {
             lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-            printf("scooterlock gesture 0x%x 0x%x\n", dir, lv_scr_act()->flags);
+            //printf("scooterlock gesture 0x%x 0x%x\n", dir, lv_scr_act()->flags);
             if (lv_scr_act()->flags & LV_OBJ_FLAG_USER_1) {
                 if (dir == LV_DIR_RIGHT) {
                     
@@ -130,12 +130,12 @@ void ScooterLock::onEvent(lv_event_t* event)
         if (code == LV_EVENT_LONG_PRESSED)
         {
             if (!instance->locked) {
-                printf("lock the scooter now\n");
+                //printf("lock the scooter now\n");
                 instance->SetBtnRecImgSrc("lock");
                 instance->locked = true;
             }
             else {
-                printf("unlock the scooter now\n");
+                //printf("unlock the scooter now\n");
                 instance->SetBtnRecImgSrc("unlock");
                 instance->locked = false;
                 instance->Manager->Push("Pages/ScooterPwd");
