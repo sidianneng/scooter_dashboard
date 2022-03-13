@@ -24,6 +24,20 @@ void ScooterPanel::onViewLoad()
     //lv_label_set_text(View.ui.labelTitle, Name);
 
     AttachEvent(root);
+    AttachEvent(View.ui.panelInfo.cont);
+    AttachEvent(View.ui.panelInfo.labelBat1);
+    AttachEvent(View.ui.panelInfo.labelBat2);
+    AttachEvent(View.ui.panelInfo.labelBat3);
+    AttachEvent(View.ui.panelInfo.labelBat4);
+    AttachEvent(View.ui.panelInfo.labelBat5);
+
+    AttachEvent(View.ui.panelInfo.labelBluetooth);
+    AttachEvent(View.ui.panelInfo.labelCharging);
+    AttachEvent(View.ui.panelInfo.labelKmh);
+    AttachEvent(View.ui.panelInfo.labelMph);
+    AttachEvent(View.ui.panelInfo.labelSptMode_r);
+    AttachEvent(View.ui.panelInfo.labelTemperature);
+    AttachEvent(View.ui.panelInfo.labelWrench);
 
     Model.TickSave = Model.GetData();
 }
@@ -93,7 +107,7 @@ void ScooterPanel::onEvent(lv_event_t* event)
 
     if (code == LV_EVENT_SHORT_CLICKED)
     {
-        //printf("scooterpanel clicked");
+        //printf("scooterpanel clicked\n");
     }
 
     if (code == LV_EVENT_GESTURE)
