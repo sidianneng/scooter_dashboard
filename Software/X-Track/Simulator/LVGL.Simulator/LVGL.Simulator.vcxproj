@@ -292,6 +292,7 @@
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_MusicPlayer.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Power.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Recorder.cpp" />
+    <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Scooter.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_SportStatus.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Storage.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_SysConfig.cpp" />
@@ -416,6 +417,7 @@
     <ClCompile Include="HAL\HAL_GPS.cpp" />
     <ClCompile Include="HAL\HAL_IMU.cpp" />
     <ClCompile Include="HAL\HAL_MAG.cpp" />
+    <ClCompile Include="HAL\HAL_Ninebot.cpp" />
     <ClCompile Include="HAL\HAL_Power.cpp" />
     <ClCompile Include="HAL\HAL_SD_CARD.cpp" />
     <ClCompile Include="lvgl\examples\assets\imgbtn_left.c" />

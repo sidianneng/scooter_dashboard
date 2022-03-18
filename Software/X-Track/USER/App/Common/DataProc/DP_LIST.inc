@@ -12,4 +12,5 @@ DP_DEF(StatusBar, 0);
 DP_DEF(MusicPlayer, 0);
 DP_DEF(TzConv, 0);
 DP_DEF(SysConfig, 0);
+DP_DEF(SCOOTER, sizeof(HAL::Scooter_Info_t));
 DP_DEF(TrackFilter, 0);

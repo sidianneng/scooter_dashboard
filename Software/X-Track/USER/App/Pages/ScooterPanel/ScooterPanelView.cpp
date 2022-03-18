@@ -32,6 +32,7 @@ void ScooterPanelView::PanelInfo_Create(lv_obj_t* par)
     lv_obj_set_style_text_color(label, lv_color_white(), 0);
     lv_label_set_text(label, "88");
     lv_obj_align(label, LV_ALIGN_TOP_MID, 0, 75);
+    ui.panelInfo.labelSpeed = label;
 
     //draw all the icons
     ui.panelInfo.labelBat1 = Icon_Create(cont, ResourcePool::GetImage("battery1"), -90, 68);

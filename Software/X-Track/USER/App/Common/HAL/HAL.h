@@ -125,6 +125,11 @@ bool Audio_PlayMusic(const char* name);
 /* Memory */
 void Memory_DumpInfo();
 
+/* Scooter Specify Hardware*/
+void Scooter_Specify_Hardware_Init(void);
+void Scooter_SetCommitCallback(CommitFunc_t func, void* userData);
+void Scooter_Update();
+
 }
 
 #endif

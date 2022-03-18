@@ -2,6 +2,7 @@
 #define __SCOOTERPANEL_MODEL_H
 
 #include "lvgl/lvgl.h"
+#include "Common/DataProc/DataProc.h"
 
 namespace Page
 {
@@ -9,10 +10,16 @@ namespace Page
 class ScooterPanelModel
 {
 public:
+    void Init();
+    void Deinit();
+
     uint32_t TickSave;
     uint32_t GetData();
-private:
 
+	void GetScooterInfo(uint8_t* speed, uint8_t* battery);
+
+private:
+    Account* account;
 };
 
 }

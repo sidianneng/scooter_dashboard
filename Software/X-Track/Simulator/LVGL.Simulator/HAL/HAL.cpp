@@ -1,4 +1,4 @@
-#include "HAL.h"
+﻿#include "HAL.h"
 
 void HAL::HAL_Init()
 {
@@ -12,4 +12,5 @@ void HAL::HAL_Update()
     IMU_Update();
     MAG_Update();
     Audio_Update();
+    Scooter_Update();
 }

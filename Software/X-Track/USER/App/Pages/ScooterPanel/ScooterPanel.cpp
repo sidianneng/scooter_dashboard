@@ -87,7 +87,9 @@ void ScooterPanel::AttachEvent(lv_obj_t* obj)
 
 void ScooterPanel::Update()
 {
-    //lv_label_set_text_fmt(View.ui.labelTick, "tick = %d save = %d", Model.GetData(), Model.TickSave);
+	uint8_t speed, battery;
+	Model.GetScooterInfo(&speed, &battery);
+	lv_label_set_text_fmt(View.ui.panelInfo.labelSpeed, "%d", speed);
 }
 
 void ScooterPanel::onTimerUpdate(lv_timer_t* timer)

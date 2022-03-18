@@ -2144,6 +2144,12 @@
     <ClCompile Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdView.cpp">
       <Filter>App\Pages\ScooterPwd</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Scooter.cpp">
+      <Filter>App\Common\DataProc</Filter>
+    </ClCompile>
+    <ClCompile Include="HAL\HAL_Ninebot.cpp">
+      <Filter>HAL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="lvgl\.github\ISSUE_TEMPLATE\bug-report.md">

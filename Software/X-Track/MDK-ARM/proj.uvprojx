@@ -643,6 +643,11 @@
               <FileType>8</FileType>
               <FilePath>..\USER\App\Common\DataProc\DP_TrackFilter.cpp</FilePath>
             </File>
+            <File>
+              <FileName>DP_Scooter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\USER\App\Common\DataProc\DP_Scooter.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1443,7 +1448,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>ScooterLock</GroupName>
+          <GroupName>Pages/ScooterLock</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -1547,7 +1552,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>ScooterPwd</GroupName>
+          <GroupName>Pages/ScooterPwd</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -1651,7 +1656,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>ScooterSetting</GroupName>
+          <GroupName>Pages/ScooterSetting</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -1755,7 +1760,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>ScooterSysinfo</GroupName>
+          <GroupName>Pages/ScooterSysinfo</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -3444,6 +3449,11 @@
               <FileType>8</FileType>
               <FilePath>..\USER\HAL\HAL_TouchPanel.cpp</FilePath>
             </File>
+            <File>
+              <FileName>HAL_Ninebot.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\USER\HAL\HAL_Ninebot.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4202,6 +4212,11 @@
               <FileName>FT3267.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Libraries\FT3267\FT3267.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Ninebot_Standard_Edition.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Libraries\Ninebot_Standard_Edition\Ninebot_Standard_Edition.cpp</FilePath>
             </File>
           </Files>
         </Group>

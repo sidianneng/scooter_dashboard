@@ -76,10 +76,14 @@ void HAL::HAL_Init()
 
 		TouchPanel_Init();
     Display_Init();
+		
+		Scooter_Specify_Hardware_Init();
     
     taskManager.Register(Power_EventMonitor, 100);
     taskManager.Register(GPS_Update, 200);
     taskManager.Register(SD_Update, 500);
+		
+		taskManager.Register(Scooter_Update, 500);
 #if CONFIG_SENSOR_ENABLE
     taskManager.Register(HAL_SensorUpdate, 1000);
 #endif

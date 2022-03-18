@@ -90,6 +90,13 @@ typedef struct
     bool isCharging;
 } Power_Info_t;
 
+/* Scooter Panel*/
+typedef struct
+{
+	uint8_t speed;
+	uint8_t battery;
+} Scooter_Info_t;
+
 }
 
 #endif
