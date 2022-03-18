@@ -1,4 +1,4 @@
-#include "HAL.h"
+﻿#include "HAL.h"
 #include <stdlib.h>
 #include "Common/DataProc/DataProc.h"
 
@@ -8,9 +8,9 @@ static void* UserData = nullptr;
 void HAL::Scooter_Update()
 {
 	Scooter_Info_t scooter_info;
-	
+
 	scooter_info.speed = rand() % 20;
-	scooter_info.battery = rand() % 5;
+    scooter_info.battery = rand() % 32;
 	
 	if(CommitFunc)
     {

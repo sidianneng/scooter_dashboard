@@ -66,6 +66,8 @@ do{\
         IMPORT_IMG(mph);
         IMPORT_IMG(lock);
         IMPORT_IMG(unlock);
+        IMPORT_IMG(transparent_bg);
+        IMPORT_IMG(transparent_bg_small);
     }
 
 } /* extern "C" */

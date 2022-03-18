@@ -10,6 +10,7 @@ class ScooterPanelView
 {
 public:
     void Create(lv_obj_t* root);
+    void Update_Bat_Icon(uint8_t battery);
 
 public:
     struct

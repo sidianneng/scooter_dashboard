@@ -45,9 +45,9 @@ void ScooterPanelView::PanelInfo_Create(lv_obj_t* par)
 
     ui.panelInfo.labelBluetooth = Icon_Create(cont, ResourcePool::GetImage("bluetooth"), -80, 25);
 
-    ui.panelInfo.labelWrench = Icon_Create(cont, ResourcePool::GetImage("wrench"), -80, -15);
+    ui.panelInfo.labelWrench = Icon_Create(cont, ResourcePool::GetImage("wrench"), -80, -20);
 
-    ui.panelInfo.labelTemperature = Icon_Create(cont, ResourcePool::GetImage("temperature"), 65, -15);
+    ui.panelInfo.labelTemperature = Icon_Create(cont, ResourcePool::GetImage("temperature"), 80, -20);
 
     ui.panelInfo.labelSptMode_r = Icon_Create(cont, ResourcePool::GetImage("sptmode_r"), 80, 15);
 
@@ -113,4 +113,30 @@ lv_obj_t* ScooterPanelView::Icon_Create(lv_obj_t* par, const void* img_src, lv_c
     lv_obj_set_style_bg_img_src(obj, img_src, 0);
 
     return obj;
+}
+
+void ScooterPanelView::Update_Bat_Icon(uint8_t battery)
+{
+    char image_name_buf[32];
+
+    for (uint8_t i = 0; i < 5; ++i)
+    {
+        if (battery & 0x01)
+            sprintf(image_name_buf, "battery%d", i + 1);
+        else 
+            sprintf(image_name_buf, "transparent_bg");
+
+        if(i == 0)
+            lv_obj_set_style_bg_img_src(ui.panelInfo.labelBat1, ResourcePool::GetImage(image_name_buf), 0);
+        else if(i == 1)
+            lv_obj_set_style_bg_img_src(ui.panelInfo.labelBat2, ResourcePool::GetImage(image_name_buf), 0);
+        else if (i == 2)
+            lv_obj_set_style_bg_img_src(ui.panelInfo.labelBat3, ResourcePool::GetImage(image_name_buf), 0);
+        else if (i == 3)
+            lv_obj_set_style_bg_img_src(ui.panelInfo.labelBat4, ResourcePool::GetImage(image_name_buf), 0);
+        else if (i == 4)
+            lv_obj_set_style_bg_img_src(ui.panelInfo.labelBat5, ResourcePool::GetImage(image_name_buf), 0);
+
+        battery >>= 1;
+    }
 }

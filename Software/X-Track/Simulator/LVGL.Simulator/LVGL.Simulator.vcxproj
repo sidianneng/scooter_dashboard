@@ -371,6 +371,8 @@
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_system_info.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_temperature.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_time_info.c" />
+    <ClCompile Include="..\..\USER\App\Resource\Image\img_src_transparent_bg.c" />
+    <ClCompile Include="..\..\USER\App\Resource\Image\img_src_transparent_bg_small.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_trip.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_unlock.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_wrench.c" />
