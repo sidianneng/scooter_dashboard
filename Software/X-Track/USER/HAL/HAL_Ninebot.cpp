@@ -22,8 +22,8 @@ void HAL::Scooter_Update()
 		scooter_info.speed = scooter_specify_hardware.Get_Speed();
 		scooter_info.battery = scooter_specify_hardware.Get_Battery();
 	
-		Serial.printf("scooter speed = %d\n", scooter_info.speed);
-		Serial.printf("scooter batter = %d\n", scooter_info.battery);
+		//Serial.printf("scooter speed = %d\n", scooter_info.speed);
+		//Serial.printf("scooter batter = %d\n", scooter_info.battery);
 	
 	  if(CommitFunc)
     {

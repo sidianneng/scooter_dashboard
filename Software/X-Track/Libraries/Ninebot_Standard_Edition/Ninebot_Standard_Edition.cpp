@@ -99,8 +99,8 @@ uint8_t Ninebot_Standard::Get_Speed(void)
 		if((i2c_rec[1] & 0x7f) == spd_num_buf[ten])
 			break;
 		
-	speed = (ten > sizeof(spd_num_buf) ? 0 : ten) * 10 + \
-		(single > sizeof(spd_num_buf) ? 0 : single);
+	speed = (ten >= sizeof(spd_num_buf) ? 0 : ten) * 10 + \
+		(single >= sizeof(spd_num_buf) ? 0 : single);
 		
 	return speed;	
 }
