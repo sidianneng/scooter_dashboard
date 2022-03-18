@@ -49,6 +49,7 @@ void ScooterPanel::onViewDidLoad()
 
 void ScooterPanel::onViewWillAppear()
 {
+    Model.Init();
     Param_t param;
     param.color = lv_color_white();
     param.time = 1000;
@@ -72,6 +73,7 @@ void ScooterPanel::onViewWillDisappear()
 void ScooterPanel::onViewDidDisappear()
 {
     lv_timer_del(timer);
+    Model.Deinit();
 }
 
 void ScooterPanel::onViewDidUnload()

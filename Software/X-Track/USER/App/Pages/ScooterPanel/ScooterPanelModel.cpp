@@ -28,7 +28,7 @@ void ScooterPanelModel::GetScooterInfo(uint8_t* speed, uint8_t* battery)
 	HAL::Scooter_Info_t scooter;
 	memset(&scooter, 0, sizeof(scooter));
 	
-	//account->Pull("SCOOTER", &scooter, sizeof(scooter));
+	account->Pull("SCOOTER", &scooter, sizeof(scooter));
 	*speed = scooter.speed;
 	*battery = scooter.battery;
 }
