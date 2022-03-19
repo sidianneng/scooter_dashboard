@@ -2175,6 +2175,16 @@
               <FileType>1</FileType>
               <FilePath>..\USER\App\Resource\Image\img_src_wrench.c</FilePath>
             </File>
+            <File>
+              <FileName>img_src_transparent_bg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\App\Resource\Image\img_src_transparent_bg.c</FilePath>
+            </File>
+            <File>
+              <FileName>img_src_transparent_bg_small.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\App\Resource\Image\img_src_transparent_bg_small.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

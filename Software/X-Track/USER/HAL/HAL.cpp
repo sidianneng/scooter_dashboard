@@ -61,6 +61,14 @@ void HAL::HAL_Init()
     FaultHandle_Init();
 
     Memory_DumpInfo();
+	
+		/*
+			We need to init the hardware of scooter.
+			Because we need to make sure the hardware ready
+			to work before the origin hardware of scooter 
+			start working.
+		*/
+		Scooter_Specify_Hardware_Init();
 
     //Power_Init();
     Backlight_Init();
@@ -76,8 +84,6 @@ void HAL::HAL_Init()
 
 		TouchPanel_Init();
     Display_Init();
-		
-		Scooter_Specify_Hardware_Init();
     
     taskManager.Register(Power_EventMonitor, 100);
     taskManager.Register(GPS_Update, 200);

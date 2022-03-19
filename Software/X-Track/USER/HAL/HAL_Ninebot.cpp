@@ -10,9 +10,7 @@ static void* UserData = nullptr;
 
 void HAL::Scooter_Specify_Hardware_Init()
 {
-		Serial.print("scooter specify hardware: init...");
     scooter_specify_hardware.begin();
-    Serial.println("success");
 }
 
 void HAL::Scooter_Update()

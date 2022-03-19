@@ -92,7 +92,7 @@ void ScooterPanel::Update()
 	uint8_t speed, battery;
 	Model.GetScooterInfo(&speed, &battery);
 	lv_label_set_text_fmt(View.ui.panelInfo.labelSpeed, "%d", speed);
-    View.Update_Bat_Icon(battery);
+  View.Update_Bat_Icon(battery);
 }
 
 void ScooterPanel::onTimerUpdate(lv_timer_t* timer)

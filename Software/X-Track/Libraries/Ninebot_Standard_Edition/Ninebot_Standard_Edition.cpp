@@ -107,6 +107,6 @@ uint8_t Ninebot_Standard::Get_Speed(void)
 
 uint8_t Ninebot_Standard::Get_Battery(void)
 {
-	return 99;
+	return (i2c_rec[3] & 0x1f);
 }
 
