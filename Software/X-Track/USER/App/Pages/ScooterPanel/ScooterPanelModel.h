@@ -16,7 +16,7 @@ public:
     uint32_t TickSave;
     uint32_t GetData();
 
-	void GetScooterInfo(uint8_t* speed, uint8_t* battery);
+	void GetScooterInfo(uint8_t* speed, uint8_t* battery, uint32_t* icons);
 
 private:
     Account* account;

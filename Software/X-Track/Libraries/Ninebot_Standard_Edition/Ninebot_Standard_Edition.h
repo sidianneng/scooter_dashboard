@@ -26,7 +26,7 @@ public:
 	//main screen
 	uint8_t Get_Speed(void);
 	uint8_t Get_Battery(void);
-	//uint8_t Get_Icon_Sta(void);
+	uint32_t Get_Other_Icons(void);
 	//bool Set_Btn_Sta(uint8_t state);
 #if 0	
 	//lock

@@ -33,9 +33,8 @@ void ScooterPanel::onViewLoad()
 
     AttachEvent(View.ui.panelInfo.labelBluetooth);
     AttachEvent(View.ui.panelInfo.labelCharging);
-    AttachEvent(View.ui.panelInfo.labelKmh);
-    AttachEvent(View.ui.panelInfo.labelMph);
-    AttachEvent(View.ui.panelInfo.labelSptMode_r);
+    AttachEvent(View.ui.panelInfo.labelSpdUint);
+    AttachEvent(View.ui.panelInfo.labelSptMode);
     AttachEvent(View.ui.panelInfo.labelTemperature);
     AttachEvent(View.ui.panelInfo.labelWrench);
 
@@ -90,9 +89,11 @@ void ScooterPanel::AttachEvent(lv_obj_t* obj)
 void ScooterPanel::Update()
 {
 	uint8_t speed, battery;
-	Model.GetScooterInfo(&speed, &battery);
+	uint32_t icons;
+	Model.GetScooterInfo(&speed, &battery, &icons);
 	lv_label_set_text_fmt(View.ui.panelInfo.labelSpeed, "%d", speed);
   View.Update_Bat_Icon(battery);
+	View.Update_Other_Icons(icons);
 }
 
 void ScooterPanel::onTimerUpdate(lv_timer_t* timer)

@@ -95,6 +95,7 @@ typedef struct
 {
 	uint8_t speed;
 	uint8_t battery;
+	uint32_t other_icons;
 } Scooter_Info_t;
 
 }

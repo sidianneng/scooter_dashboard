@@ -23,7 +23,7 @@ uint32_t ScooterPanelModel::GetData()
     return lv_tick_get();
 }
 
-void ScooterPanelModel::GetScooterInfo(uint8_t* speed, uint8_t* battery)
+void ScooterPanelModel::GetScooterInfo(uint8_t* speed, uint8_t* battery, uint32_t* icons)
 {
 	HAL::Scooter_Info_t scooter;
 	memset(&scooter, 0, sizeof(scooter));
@@ -31,4 +31,5 @@ void ScooterPanelModel::GetScooterInfo(uint8_t* speed, uint8_t* battery)
 	account->Pull("SCOOTER", &scooter, sizeof(scooter));
 	*speed = scooter.speed;
 	*battery = scooter.battery;
+	*icons = scooter.other_icons;
 }

@@ -49,11 +49,9 @@ void ScooterPanelView::PanelInfo_Create(lv_obj_t* par)
 
     ui.panelInfo.labelTemperature = Icon_Create(cont, ResourcePool::GetImage("temperature"), 80, -20);
 
-    ui.panelInfo.labelSptMode_r = Icon_Create(cont, ResourcePool::GetImage("sptmode_r"), 80, 15);
+    ui.panelInfo.labelSptMode = Icon_Create(cont, ResourcePool::GetImage("sptmode_r"), 80, 15);
 
-    ui.panelInfo.labelKmh = Icon_Create(cont, ResourcePool::GetImage("kmh"), 80, 35);
-
-    ui.panelInfo.labelMph = Icon_Create(cont, ResourcePool::GetImage("mph"), 65, 50);
+    ui.panelInfo.labelSpdUint = Icon_Create(cont, ResourcePool::GetImage("kmh"), 80, 40);
 
     ui.panelInfo.cont = cont;
 }
@@ -139,4 +137,49 @@ void ScooterPanelView::Update_Bat_Icon(uint8_t battery)
 
         battery >>= 1;
     }
+}
+
+void ScooterPanelView::Update_Other_Icons(uint32_t icons)
+{
+	char icon_name_buf[32];
+	
+	if(icons & 0x00800000)
+		sprintf(icon_name_buf, "wrench");
+	else
+		sprintf(icon_name_buf, "transparent_bg");
+	lv_obj_set_style_bg_img_src(ui.panelInfo.labelWrench, ResourcePool::GetImage(icon_name_buf), 0);
+		
+	if(icons & 0x00008000)
+		sprintf(icon_name_buf, "temperature");
+	else
+		sprintf(icon_name_buf, "transparent_bg");
+	lv_obj_set_style_bg_img_src(ui.panelInfo.labelTemperature, ResourcePool::GetImage(icon_name_buf), 0);
+	
+	if(icons & 0x00000080)
+		sprintf(icon_name_buf, "sptmode_r");
+	if(icons & 0x00000001)
+		sprintf(icon_name_buf, "sptmode_b");
+	if(icons & 0x00000081 == 0x00)
+		sprintf(icon_name_buf, "transparent_bg");
+	lv_obj_set_style_bg_img_src(ui.panelInfo.labelSptMode, ResourcePool::GetImage(icon_name_buf), 0);
+	
+	if(icons & 0x00000002)
+		sprintf(icon_name_buf, "kmh");
+	if(icons & 0x00000010)
+		sprintf(icon_name_buf, "mph");
+	if(icons & 0x00000012 == 0x00)
+		sprintf(icon_name_buf, "transparent_bg");
+	lv_obj_set_style_bg_img_src(ui.panelInfo.labelSpdUint, ResourcePool::GetImage(icon_name_buf), 0);
+	
+	if(icons & 0x00000008)
+		sprintf(icon_name_buf, "charging");
+	else
+		sprintf(icon_name_buf, "transparent_bg_small");
+	lv_obj_set_style_bg_img_src(ui.panelInfo.labelCharging, ResourcePool::GetImage(icon_name_buf), 0);
+	
+	if(icons & 0x00000004)
+		sprintf(icon_name_buf, "bluetooth");
+	else
+		sprintf(icon_name_buf, "transparent_bg");
+	lv_obj_set_style_bg_img_src(ui.panelInfo.labelBluetooth, ResourcePool::GetImage(icon_name_buf), 0);
 }

@@ -110,3 +110,8 @@ uint8_t Ninebot_Standard::Get_Battery(void)
 	return (i2c_rec[3] & 0x1f);
 }
 
+uint32_t Ninebot_Standard::Get_Other_Icons(void)
+{
+	return (i2c_rec[0] << 16 | i2c_rec[1] << 8 | i2c_rec[2] << 0);
+}
+

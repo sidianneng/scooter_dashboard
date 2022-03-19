@@ -11,6 +11,7 @@ class ScooterPanelView
 public:
     void Create(lv_obj_t* root);
     void Update_Bat_Icon(uint8_t battery);
+		void Update_Other_Icons(uint32_t icons);
 
 public:
     struct
@@ -24,8 +25,7 @@ public:
             lv_obj_t* labelBluetooth;
             lv_obj_t* labelWrench;
             lv_obj_t* labelTemperature;
-            lv_obj_t* labelSptMode_b;
-            lv_obj_t* labelSptMode_r;
+            lv_obj_t* labelSptMode;
 
             lv_obj_t* labelBat1;
             lv_obj_t* labelBat2;
@@ -35,8 +35,7 @@ public:
 
             lv_obj_t* labelCharging;
 
-            lv_obj_t* labelKmh;
-            lv_obj_t* labelMph;
+            lv_obj_t* labelSpdUint;
         } panelInfo;
 
         struct
