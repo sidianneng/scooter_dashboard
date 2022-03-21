@@ -45,7 +45,7 @@
 #  define SERIAL_1_IRQ_HANDLER_DEF()        void USART1_IRQHandler(void)
 #endif
 
-#define SERIAL_2_ENABLE                     1
+#define SERIAL_2_ENABLE                     0
 #if SERIAL_2_ENABLE
 #  define SERIAL_2_USART                    USART2
 #  define SERIAL_2_IRQ_HANDLER_DEF()        void USART2_IRQHandler(void)
@@ -115,7 +115,7 @@
 #define PWM_DUTYCYCLE_DEFAULT               1000
 #define PWM_FREQUENCY_DEFAULT               10000
 
-/* Digital Tube(TM1650) decode*/
+/* Digital Tube(TM1650) decode */
 #define DIGITAL_TUBE_SCL_PIN								PA11
 #define DIGITAL_TUBE_SDA_PIN								PA12
 

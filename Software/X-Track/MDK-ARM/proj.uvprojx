@@ -589,11 +589,6 @@
               <FilePath>..\USER\App\Common\DataProc\DP_Clock.cpp</FilePath>
             </File>
             <File>
-              <FileName>DP_GPS.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\USER\App\Common\DataProc\DP_GPS.cpp</FilePath>
-            </File>
-            <File>
               <FileName>DP_IMU.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\USER\App\Common\DataProc\DP_IMU.cpp</FilePath>
@@ -617,11 +612,6 @@
               <FileName>DP_Recorder.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\USER\App\Common\DataProc\DP_Recorder.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>DP_SportStatus.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\USER\App\Common\DataProc\DP_SportStatus.cpp</FilePath>
             </File>
             <File>
               <FileName>DP_Storage.cpp</FileName>
@@ -3415,11 +3405,6 @@
               <FilePath>..\USER\HAL\HAL_FaultHandle.cpp</FilePath>
             </File>
             <File>
-              <FileName>HAL_GPS.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\USER\HAL\HAL_GPS.cpp</FilePath>
-            </File>
-            <File>
               <FileName>HAL_I2C_Scan.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\USER\HAL\HAL_I2C_Scan.cpp</FilePath>
@@ -4207,11 +4192,6 @@
               <FileName>MillisTaskManager.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Libraries\MillisTaskManager\MillisTaskManager.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>TinyGPS++.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Libraries\TinyGPSPlus\src\TinyGPS++.cpp</FilePath>
             </File>
             <File>
               <FileName>StackInfo.c</FileName>
