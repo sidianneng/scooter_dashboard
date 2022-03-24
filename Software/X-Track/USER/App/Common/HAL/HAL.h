@@ -129,6 +129,9 @@ void Memory_DumpInfo();
 void Scooter_Specify_Hardware_Init(void);
 void Scooter_SetCommitCallback(CommitFunc_t func, void* userData);
 void Scooter_Update();
+void Scooter_Handle_UI_Cmd(uint16_t command, uint16_t parameter);
+void HalfDuplexSerial_SetCommitCallback(CommitFunc_t func, void* userData);
+void HalfDuplexSerial_Update();
 
 }
 

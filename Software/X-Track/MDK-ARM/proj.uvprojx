@@ -638,6 +638,11 @@
               <FileType>8</FileType>
               <FilePath>..\USER\App\Common\DataProc\DP_Scooter.cpp</FilePath>
             </File>
+            <File>
+              <FileName>DP_HalfDuplexSerial.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\USER\App\Common\DataProc\DP_HalfDuplexSerial.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

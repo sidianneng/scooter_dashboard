@@ -51,6 +51,14 @@ uint8_t s_usart3_tx_cnt = 0;
 uint32_t uart1_rx_cnt = 0;
 //-----------------------------------------------------------------------------
 
+//local value for UI command
+//-----------------------------------------------------------------------------
+static bool Ui_Cmd_flag = false;
+static uint8_t Ui_Cmd_cnt = 0;
+static uint8_t Ui_Cmd_len = 0;
+static uint8_t Ui_Cmd_buf[32] = {0};
+//-----------------------------------------------------------------------------
+
 void Digital_Tube_Decode_Scl(void)
 {
 	if(scl_int_en) {
@@ -144,16 +152,28 @@ extern "C" void USART2_IRQHandler(void)
 
 	if(USART_GetITStatus(USART2, USART_INT_TDE) != RESET && uart3_tx_en)
   {
-    
-    USART_SendData(USART2, s_usart2_rx_buffer[s_usart3_tx_cnt++]);
+    if(Ui_Cmd_flag && !s_usart3_tx_cnt){
+			USART_SendData(USART2, Ui_Cmd_buf[Ui_Cmd_cnt++]);
+			if(Ui_Cmd_cnt >= Ui_Cmd_len)
+			{
+				USART_INTConfig(USART2, USART_INT_TDE, DISABLE);
+				Ui_Cmd_cnt = 0;
+				Ui_Cmd_flag = false;
+				s_usart2_rx_max = 9;
+				s_usart2_rx_cnt = 0;
+				uart3_tx_en = 0;
+			}
+		} else {
+			USART_SendData(USART2, s_usart2_rx_buffer[s_usart3_tx_cnt++]);
 
-    if(s_usart3_tx_cnt >= s_usart2_rx_max)
-    {
-      USART_INTConfig(USART2, USART_INT_TDE, DISABLE);
-			s_usart2_rx_max = 9;
-			s_usart2_rx_cnt = 0;
-			uart3_tx_en = 0;
-    }
+			if(s_usart3_tx_cnt >= s_usart2_rx_max)
+			{
+				USART_INTConfig(USART2, USART_INT_TDE, DISABLE);
+				s_usart2_rx_max = 9;
+				s_usart2_rx_cnt = 0;
+				uart3_tx_en = 0;
+			}
+		}
   }
 }
 
@@ -314,3 +334,19 @@ uint32_t Ninebot_Standard::Get_Other_Icons(void)
 	return (i2c_rec[0] << 16 | i2c_rec[1] << 8 | i2c_rec[2] << 0);
 }
 
+void Ninebot_Standard::HandleCmd(uint16_t command, uint16_t parameter)
+{
+    uint8_t cmd_buf_lock[]   = {0x5a, 0xa5, 0x02, 0x3e, 0x20, 0x03, 0x70, 0x01, 0x00, 0x2b, 0xff};
+		uint8_t cmd_buf_unlock[] = {0x5a, 0xa5, 0x02, 0x3e, 0x20, 0x03, 0x71, 0x01, 0x00, 0x2a, 0xff};
+    if(command == 0){
+        if(parameter == 0){
+            memcpy(Ui_Cmd_buf, cmd_buf_unlock, sizeof(cmd_buf_unlock));
+            Ui_Cmd_len = sizeof(cmd_buf_unlock);
+				} else {
+            memcpy(Ui_Cmd_buf, cmd_buf_lock, sizeof(cmd_buf_lock));
+            Ui_Cmd_len = sizeof(cmd_buf_lock);
+				}
+				Ui_Cmd_cnt = 0;
+				Ui_Cmd_flag = true;
+    }
+}

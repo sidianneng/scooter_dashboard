@@ -98,6 +98,17 @@ typedef struct
 	uint32_t other_icons;
 } Scooter_Info_t;
 
+/* HalfDuplexSerial commit data to UI */
+typedef struct
+{
+	uint8_t remain_battery;
+	uint8_t remain_mileage;
+	uint32_t total_mileage;
+	
+	bool cruise_contrl;
+	uint8_t energy_recovery;
+}HalfDuplexSerial_BSP_Info_t;
+
 }
 
 #endif

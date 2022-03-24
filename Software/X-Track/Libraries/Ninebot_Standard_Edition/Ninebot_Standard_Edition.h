@@ -27,6 +27,7 @@ public:
 	uint8_t Get_Speed(void);
 	uint8_t Get_Battery(void);
 	uint32_t Get_Other_Icons(void);
+	void HandleCmd(uint16_t command, uint16_t parameter);
 	//bool Set_Btn_Sta(uint8_t state);
 #if 0	
 	//lock

@@ -118,6 +118,29 @@ typedef struct
     bool isActive;
 } TrackFilter_Info_t;
 
+/* HalfDuplexSerial send cmd to hardware */
+enum
+{
+    SCOOTER_CMD_LOCK = 0,
+    SCOOTER_CMD_GETSTATE,
+    SCOOTER_CMD_CRUISE,
+    SCOOTER_CMD_ENERGY_RECOVERY
+};
+
+enum
+{
+    ERM_CLOSE = 0,
+    ERM_SLIGHT,
+    ERM_MODRATE,
+    ERM_HIGH
+};
+
+typedef struct
+{
+	uint16_t command;
+	uint16_t parameter;
+}HalfDuplexSerial_UI_Info_t;
+
 }
 
 #endif

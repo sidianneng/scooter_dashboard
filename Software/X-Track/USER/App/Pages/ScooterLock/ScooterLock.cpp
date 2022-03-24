@@ -36,6 +36,7 @@ void ScooterLock::onViewDidLoad()
 
 void ScooterLock::onViewWillAppear()
 {
+    Model.Init();
     Param_t param;
     param.color = lv_color_white();
     param.time = 1000;
@@ -59,6 +60,7 @@ void ScooterLock::onViewWillDisappear()
 void ScooterLock::onViewDidDisappear()
 {
     lv_timer_del(timer);
+    Model.Deinit();
 }
 
 void ScooterLock::onViewDidUnload()
@@ -133,12 +135,14 @@ void ScooterLock::onEvent(lv_event_t* event)
                 //printf("lock the scooter now\n");
                 instance->SetBtnRecImgSrc("lock");
                 instance->locked = true;
+							  instance->Model.LockScooter();
             }
             else {
                 //printf("unlock the scooter now\n");
                 instance->SetBtnRecImgSrc("unlock");
                 instance->locked = false;
                 instance->Manager->Push("Pages/ScooterPwd");
+							  instance->Model.UnlockScooter();
             }
         }
     }
