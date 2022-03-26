@@ -6,7 +6,6 @@ typedef Ninebot_Standard SCOOTER_CLASS;
 static SCOOTER_CLASS scooter_specify_hardware;
 
 static HAL::CommitFunc_t CommitFunc = nullptr;
-static HAL::CommitFunc_t CommitFunc2 = nullptr;
 static void* UserData = nullptr;
 
 void HAL::Scooter_Specify_Hardware_Init()
@@ -35,32 +34,5 @@ void HAL::Scooter_SetCommitCallback(CommitFunc_t func, void* userData)
 {
 		CommitFunc = func;
     UserData = userData;
-}
-
-void HAL::Scooter_Handle_UI_Cmd(uint16_t command, uint16_t parameter)
-{
-	scooter_specify_hardware.HandleCmd(command, parameter);
-}
-
-void HAL::HalfDuplexSerial_Update()
-{
-	#if 0
-		HalfDuplexSerial_BSP_Info_t halfduplexserial_bsp_info;
-	
-		halfduplexserial_bsp_info.remain_battery = 66;
-	
-		if(CommitFunc2)
-    {
-        CommitFunc2(&halfduplexserial_bsp_info, UserData);
-    }
-	#endif
-}
-
-void HAL::HalfDuplexSerial_SetCommitCallback(CommitFunc_t func, void* userData)
-{
-	#if 0
-		CommitFunc2 = func;
-    UserData = userData;
-	#endif
 }
 

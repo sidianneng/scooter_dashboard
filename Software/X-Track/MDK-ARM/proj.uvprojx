@@ -3454,6 +3454,11 @@
               <FileType>8</FileType>
               <FilePath>..\USER\HAL\HAL_Ninebot.cpp</FilePath>
             </File>
+            <File>
+              <FileName>HAL_HalfDuplexSerial.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\USER\HAL\HAL_HalfDuplexSerial.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4212,6 +4217,11 @@
               <FileName>Ninebot_Standard_Edition.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Libraries\Ninebot_Standard_Edition\Ninebot_Standard_Edition.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HalfDuplexSerial.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Libraries\HalfDuplexSerial\HalfDuplexSerial.cpp</FilePath>
             </File>
           </Files>
         </Group>

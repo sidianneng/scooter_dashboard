@@ -15,7 +15,7 @@ static int onEvent(Account* account, Account::EventParam_t* param)
 
     DataProc::HalfDuplexSerial_UI_Info_t* info = (DataProc::HalfDuplexSerial_UI_Info_t*)param->data_p;
 
-    HAL::Scooter_Handle_UI_Cmd(info->command, info->parameter);
+    HAL::HalfDuplexSerial_Handle_UI_Cmd(info->command, info->parameter);
 
     return 0;
 }

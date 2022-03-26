@@ -68,6 +68,7 @@ void HAL::HAL_Init()
 			to work before the origin hardware of scooter 
 			start working.
 		*/
+		HalfDuplexSerial_Init();
 		Scooter_Specify_Hardware_Init();
 
     //Power_Init();
