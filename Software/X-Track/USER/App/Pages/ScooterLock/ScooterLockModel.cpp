@@ -24,7 +24,7 @@ void ScooterLockModel::Deinit()
 
 void ScooterLockModel::LockScooter()
 {
-    DataProc::HalfDuplexSerial_UI_Info_t serInfo;
+    HAL::HalfDuplexSerial_BSP_Info_t serInfo;
 	
     serInfo.command = 0;
     serInfo.parameter = true;
@@ -34,7 +34,7 @@ void ScooterLockModel::LockScooter()
 	
 void ScooterLockModel::UnlockScooter()
 {
-    DataProc::HalfDuplexSerial_UI_Info_t serInfo;
+    HAL::HalfDuplexSerial_BSP_Info_t serInfo;
 	
     serInfo.command = 0;
     serInfo.parameter = false;

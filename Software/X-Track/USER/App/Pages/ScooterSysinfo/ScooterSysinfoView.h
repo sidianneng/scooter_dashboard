@@ -10,6 +10,8 @@ class ScooterSysinfoView
 {
 public:
     void Create(lv_obj_t* root);
+    void Ui_Update(uint8_t rem_bat, uint8_t rem_mile, \
+			uint32_t total_mile);
 public:
     struct
     {

@@ -36,10 +36,13 @@ uint32_t uart1_rx_cnt = 0;
 
 //local value for UI command
 //-----------------------------------------------------------------------------
-static bool Ui_Cmd_flag = false;
-static uint8_t Ui_Cmd_cnt = 0;
-static uint8_t Ui_Cmd_len = 0;
-static uint8_t Ui_Cmd_buf[32] = {0};
+bool Ui_Cmd_flag = false;
+uint8_t Ui_Cmd_cnt = 0;
+uint8_t Ui_Cmd_len = 0;
+bool Ui_Get_Recv_data = false;
+uint8_t Ui_Cmd_buf[32] = {0};
+uint8_t Ui_Cmd_Recv_buf[64];
+uint8_t test_num = 0x66;
 //-----------------------------------------------------------------------------
 
 extern "C" void USART2_IRQHandler(void)
@@ -65,6 +68,10 @@ extern "C" void USART2_IRQHandler(void)
 
 		if(s_usart3_rx_cnt >= s_usart3_rx_max)
     {
+			if(Ui_Get_Recv_data){
+				  memcpy(Ui_Cmd_Recv_buf, s_usart3_rx_buffer, s_usart3_rx_cnt - 1);
+					Ui_Get_Recv_data = false;
+			}
       USART_INTConfig(USART3, USART_INT_TDE, ENABLE);
 			s_usart2_tx_cnt = 0;
 			uart2_tx_en = 1;
@@ -78,12 +85,14 @@ extern "C" void USART2_IRQHandler(void)
 			USART_SendData(USART2, Ui_Cmd_buf[Ui_Cmd_cnt++]);
 			if(Ui_Cmd_cnt >= Ui_Cmd_len)
 			{
-				USART_INTConfig(USART2, USART_INT_TDE, DISABLE);
 				Ui_Cmd_cnt = 0;
 				Ui_Cmd_flag = false;
 				s_usart2_rx_max = 9;
 				s_usart2_rx_cnt = 0;
 				uart3_tx_en = 0;
+				Ui_Get_Recv_data = true;
+				USART_INTConfig(USART2, USART_INT_TDE, DISABLE);
+				USART_INTConfig(USART2, USART_INT_RDNE, ENABLE);
 			}
 		} else {
 			USART_SendData(USART2, s_usart2_rx_buffer[s_usart3_tx_cnt++]);
@@ -224,23 +233,25 @@ bool HalfDuplexSerial::begin(void)
 
 uint8_t HalfDuplexSerial::Get_Remain_Bat(void)
 {
-	return 66;
+	return Ui_Cmd_Recv_buf[13];
 }
 
 uint8_t HalfDuplexSerial::Get_Remain_Mileage(void)
 {
-	return 16;
+	return MAX_MILEAGE * Get_Remain_Bat() / 100;
 }
 
 uint32_t HalfDuplexSerial::Get_Total_Mileage(void)
 {
-	return 123400;
+	return Ui_Cmd_Recv_buf[24] << 24 | Ui_Cmd_Recv_buf[23] << 16 |\
+		Ui_Cmd_Recv_buf[22] << 8 | Ui_Cmd_Recv_buf[21];
 }
 
 void HalfDuplexSerial::HandleCmd(uint16_t command, uint16_t parameter)
 {
     uint8_t cmd_buf_lock[]   = {0x5a, 0xa5, 0x02, 0x3e, 0x20, 0x03, 0x70, 0x01, 0x00, 0x2b, 0xff};
 		uint8_t cmd_buf_unlock[] = {0x5a, 0xa5, 0x02, 0x3e, 0x20, 0x03, 0x71, 0x01, 0x00, 0x2a, 0xff};
+		uint8_t cmd_buf_getsta[] = {0x5a, 0xa5, 0x01, 0x3e, 0x20, 0x01, 0xb0, 0x20, 0xcf, 0xfe};
     if(command == 0){
         if(parameter == 0){
             memcpy(Ui_Cmd_buf, cmd_buf_unlock, sizeof(cmd_buf_unlock));
@@ -249,7 +260,10 @@ void HalfDuplexSerial::HandleCmd(uint16_t command, uint16_t parameter)
             memcpy(Ui_Cmd_buf, cmd_buf_lock, sizeof(cmd_buf_lock));
             Ui_Cmd_len = sizeof(cmd_buf_lock);
 				}
-				Ui_Cmd_cnt = 0;
-				Ui_Cmd_flag = true;
-    }
+    } else if(command == 1){
+        memcpy(Ui_Cmd_buf, cmd_buf_getsta, sizeof(cmd_buf_getsta));
+        Ui_Cmd_len = sizeof(cmd_buf_getsta);
+		}
+		Ui_Cmd_cnt = 0;
+		Ui_Cmd_flag = true;
 }

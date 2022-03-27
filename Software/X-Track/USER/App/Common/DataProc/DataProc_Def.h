@@ -135,12 +135,6 @@ enum
     ERM_HIGH
 };
 
-typedef struct
-{
-	uint16_t command;
-	uint16_t parameter;
-}HalfDuplexSerial_UI_Info_t;
-
 }
 
 #endif

@@ -16,9 +16,9 @@ void ScooterSysinfoView::Create(lv_obj_t* root)
     lv_obj_set_style_bg_opa(cont, LV_OPA_COVER, 0);
     lv_obj_set_style_bg_color(cont, lv_color_hex(0x000000), 0);
 
-    ui.remainMile = Info_Create(cont, "12.0Km/h", -60, -60);
-    ui.remainBat  = Info_Create(cont, "78%", 60, -60);
-    ui.totalMile  = Info_Create(cont, "1234Km", 0, 60);
+    ui.remainMile = Info_Create(cont, "0.0Km/h", -60, -60);
+    ui.remainBat  = Info_Create(cont, "0%", 60, -60);
+    ui.totalMile  = Info_Create(cont, "0.0Km", 0, 60);
 }
 
 lv_obj_t* ScooterSysinfoView::Info_Create(lv_obj_t* obj,
@@ -45,4 +45,16 @@ lv_obj_t* ScooterSysinfoView::Info_Create(lv_obj_t* obj,
     lv_label_set_text(label, labelText);
 
     return label;
+}
+
+void ScooterSysinfoView::Ui_Update(uint8_t rem_bat, uint8_t rem_mile, \
+			uint32_t total_mile)
+{
+    char temp_buf[32];
+    sprintf(temp_buf, "%d", rem_bat);
+		lv_label_set_text(ui.remainBat, temp_buf);
+    sprintf(temp_buf, "%d Km", rem_mile);
+		lv_label_set_text(ui.remainMile, temp_buf);
+    sprintf(temp_buf, "%d Km", total_mile/1000);
+		lv_label_set_text(ui.totalMile, temp_buf);
 }

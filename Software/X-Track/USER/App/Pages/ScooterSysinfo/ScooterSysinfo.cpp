@@ -35,6 +35,7 @@ void ScooterSysinfo::onViewDidLoad()
 
 void ScooterSysinfo::onViewWillAppear()
 {
+		Model.Init();
     Param_t param;
     param.color = lv_color_white();
     param.time = 1000;
@@ -43,11 +44,16 @@ void ScooterSysinfo::onViewWillAppear()
 
     lv_obj_set_style_bg_color(root, param.color, LV_PART_MAIN);
     timer = lv_timer_create(onTimerUpdate, param.time, this);
+	
+    Model.Send_Get_State_Cmd();
 }
 
 void ScooterSysinfo::onViewDidAppear()
 {
-
+    uint8_t rem_bat, rem_mile;
+    uint32_t total_mile;
+    Model.Get_Mile_State(&rem_bat, &rem_mile, &total_mile);
+    View.Ui_Update(rem_bat, rem_mile, total_mile);
 }
 
 void ScooterSysinfo::onViewWillDisappear()
@@ -58,11 +64,12 @@ void ScooterSysinfo::onViewWillDisappear()
 void ScooterSysinfo::onViewDidDisappear()
 {
     lv_timer_del(timer);
+		Model.Deinit();
 }
 
 void ScooterSysinfo::onViewDidUnload()
 {
-
+	
 }
 
 void ScooterSysinfo::AttachEvent(lv_obj_t* obj)
@@ -73,7 +80,7 @@ void ScooterSysinfo::AttachEvent(lv_obj_t* obj)
 
 void ScooterSysinfo::Update()
 {
-    //lv_label_set_text_fmt(View.ui.labelTick, "tick = %d save = %d", Model.GetData(), Model.TickSave);
+
 }
 
 void ScooterSysinfo::onTimerUpdate(lv_timer_t* timer)

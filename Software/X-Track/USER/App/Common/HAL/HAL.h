@@ -134,7 +134,7 @@ void Scooter_Update();
 void HalfDuplexSerial_Init(void);
 void HalfDuplexSerial_Update(void);
 void HalfDuplexSerial_SetCommitCallback(CommitFunc_t func, void* userData);
-void HalfDuplexSerial_Handle_UI_Cmd(uint16_t command, uint16_t parameter);
+void HalfDuplexSerial_Handle_UI_Cmd(HalfDuplexSerial_BSP_Info_t* info);
 
 }
 

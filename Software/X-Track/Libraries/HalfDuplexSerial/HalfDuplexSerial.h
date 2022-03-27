@@ -3,6 +3,8 @@
 
 #include "Arduino.h"
 
+#define MAX_MILEAGE 25
+
 class HalfDuplexSerial
 {
 public:

@@ -73,7 +73,7 @@ void FT3267::TP_Get_Position(uint16_t* pos_x, uint16_t* pos_y)
 #endif
     *pos_x = buf[1];
     *pos_y = buf[3];
-#if 1
+#if 0
 	Serial.print("tp: ");
 	Serial.print(buf[1]);
 	Serial.print(" ");

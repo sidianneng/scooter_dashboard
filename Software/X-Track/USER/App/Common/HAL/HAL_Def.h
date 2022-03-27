@@ -101,6 +101,9 @@ typedef struct
 /* HalfDuplexSerial commit data to UI */
 typedef struct
 {
+	uint16_t command;
+	uint16_t parameter;
+	
 	uint8_t remain_battery;
 	uint8_t remain_mileage;
 	uint32_t total_mileage;
