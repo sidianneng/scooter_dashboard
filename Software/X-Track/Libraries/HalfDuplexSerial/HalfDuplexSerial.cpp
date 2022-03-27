@@ -1,143 +1,108 @@
 #include "HalfDuplexSerial.h"
 
-//local value for halfduplex serial
-//-----------------------------------------------------------------------------
-#define COUNTOF(a)                       (sizeof(a) / sizeof(*(a)))
-#define USART2_TX_BUFFER_SIZE            (COUNTOF(usart2_tx_buffer) - 1)
-#define USART3_TX_BUFFER_SIZE            (COUNTOF(usart3_tx_buffer) - 1)
+static HalfDuplexSerial_Interface HDSerial = {
+	.mother_rx_max = MIN_PKT_LEN,
+	.dash_rx_max   = MIN_PKT_LEN,
+	.HDS_header[0] = 0x5a,
+	.HDS_header[1] = 0xa5,
+};
 
-uint8_t usart2_tx_buffer[64];
-uint8_t usart3_tx_buffer[64];
-uint8_t usart2_rx_buffer[USART3_TX_BUFFER_SIZE];
-uint8_t usart3_rx_buffer[USART2_TX_BUFFER_SIZE];
-uint8_t usart2_tx_counter = 0x00;
-uint8_t usart3_tx_counter = 0x00;
-uint8_t usart2_rx_counter = 0x00; 
-uint8_t usart3_rx_counter = 0x00;
-uint8_t usart2_tx_buffer_size = USART2_TX_BUFFER_SIZE;
-uint8_t usart3_tx_buffer_size = USART3_TX_BUFFER_SIZE;
-
-uint8_t tx_rx_flag = 0;
-
-uint8_t uart2_tx_en = 0;
-uint8_t uart3_tx_en = 0;
-
-uint8_t s_usart2_rx_buffer[128] = {0};
-uint8_t s_usart3_rx_buffer[128] = {0};
-uint8_t s_usart2_rx_cnt = 0;
-uint8_t s_usart3_rx_cnt = 0;
-uint8_t s_usart2_rx_max = 9;
-uint8_t s_usart3_rx_max = 9;
-uint8_t s_usart2_tx_cnt = 0;
-uint8_t s_usart3_tx_cnt = 0;
-
-uint32_t uart1_rx_cnt = 0;
-//-----------------------------------------------------------------------------
-
-//local value for UI command
-//-----------------------------------------------------------------------------
-bool Ui_Cmd_flag = false;
-uint8_t Ui_Cmd_cnt = 0;
-uint8_t Ui_Cmd_len = 0;
-bool Ui_Get_Recv_data = false;
-uint8_t Ui_Cmd_buf[32] = {0};
-uint8_t Ui_Cmd_Recv_buf[64];
-uint8_t test_num = 0x66;
-//-----------------------------------------------------------------------------
-
-extern "C" void USART2_IRQHandler(void)
+extern "C" MOTHER_IRQ_HANDLER()
 {
-	uint8_t temp = 0x00;
-  if(USART_GetITStatus(USART2, USART_INT_RDNE) != RESET)
-  {
-    /* read one byte from the receive data register */
-		temp = USART_ReceiveData(USART2);
-		if(s_usart3_rx_cnt == 2){
-			if(s_usart3_rx_buffer[s_usart3_rx_cnt-2] == 0x5a && s_usart3_rx_buffer[s_usart3_rx_cnt-1] == 0xa5)
-				uart1_rx_cnt++;
-				if(uart1_rx_cnt == 1)
-					s_usart3_rx_max = 45;
-				else if(uart1_rx_cnt == 2)
-					s_usart3_rx_max = 24;
-				else {
-					uart1_rx_cnt = 2;
-					s_usart3_rx_max += temp;
-				}
+	//mother board data receive
+	if(USART_GetITStatus(USART2, USART_INT_RDNE) != RESET){
+		uint8_t temp = USART_ReceiveData(USART2);
+		if(HDSerial.mother_rx_cnt == 2){
+			if(HDSerial.mother_rx_buf[HDSerial.mother_rx_cnt - 2] == \
+				HDSerial.HDS_header[0] && \
+			HDSerial.mother_rx_buf[HDSerial.mother_rx_cnt - 1] == \
+				HDSerial.HDS_header[1])
+				HDSerial.mother_rx_flag_cnt++;
+			if(HDSerial.mother_rx_flag_cnt == 1)
+				HDSerial.mother_rx_max = MOTHER_FIRST_PKT_LEN;
+			else if(HDSerial.mother_rx_flag_cnt == 2)
+				HDSerial.mother_rx_max = MOTHER_SECOND_PKT_LEN;
+			else {
+				HDSerial.mother_rx_flag_cnt = 2;
+				HDSerial.mother_rx_max += temp;
+			}
 		}
-    s_usart3_rx_buffer[s_usart3_rx_cnt++] = temp;
+    HDSerial.mother_rx_buf[HDSerial.mother_rx_cnt++] = temp;
 
-		if(s_usart3_rx_cnt >= s_usart3_rx_max)
+		if(HDSerial.mother_rx_cnt >= HDSerial.mother_rx_max)
     {
-			if(Ui_Get_Recv_data){
-				  memcpy(Ui_Cmd_Recv_buf, s_usart3_rx_buffer, s_usart3_rx_cnt - 1);
-					Ui_Get_Recv_data = false;
+			if(HDSerial.ui_get_recv_data){
+				  memcpy(HDSerial.ui_rx_buf, HDSerial.mother_rx_buf, \
+									HDSerial.mother_rx_cnt - 1);
+					HDSerial.ui_get_recv_data = false;
 			}
       USART_INTConfig(USART3, USART_INT_TDE, ENABLE);
-			s_usart2_tx_cnt = 0;
-			uart2_tx_en = 1;
+			HDSerial.dash_tx_cnt = 0;
+			HDSerial.dash_tx_en = true;
     }
 		USART_ClearITPendingBit(USART2, USART_INT_RDNE);
-  }
-
-	if(USART_GetITStatus(USART2, USART_INT_TDE) != RESET && uart3_tx_en)
-  {
-    if(Ui_Cmd_flag && !s_usart3_tx_cnt){
-			USART_SendData(USART2, Ui_Cmd_buf[Ui_Cmd_cnt++]);
-			if(Ui_Cmd_cnt >= Ui_Cmd_len)
+	}
+	
+	//mother board data transfer
+	if(USART_GetITStatus(USART2, USART_INT_TDE) != RESET && \
+		HDSerial.mother_tx_en){
+    if(HDSerial.ui_cmd_en && !HDSerial.mother_tx_cnt){
+			USART_SendData(USART2, HDSerial.ui_tx_buf[HDSerial.ui_cmd_cnt++]);
+			if(HDSerial.ui_cmd_cnt >= HDSerial.ui_cmd_len)
 			{
-				Ui_Cmd_cnt = 0;
-				Ui_Cmd_flag = false;
-				s_usart2_rx_max = 9;
-				s_usart2_rx_cnt = 0;
-				uart3_tx_en = 0;
-				Ui_Get_Recv_data = true;
+				HDSerial.ui_cmd_cnt = 0;
+				HDSerial.ui_cmd_en = false;
+				HDSerial.dash_rx_max = MIN_PKT_LEN;
+				HDSerial.dash_rx_cnt = 0;
+				HDSerial.mother_tx_en = 0;
+				HDSerial.ui_get_recv_data = true;
 				USART_INTConfig(USART2, USART_INT_TDE, DISABLE);
 				USART_INTConfig(USART2, USART_INT_RDNE, ENABLE);
 			}
 		} else {
-			USART_SendData(USART2, s_usart2_rx_buffer[s_usart3_tx_cnt++]);
+			USART_SendData(USART2, HDSerial.dash_rx_buf[HDSerial.mother_tx_cnt++]);
 
-			if(s_usart3_tx_cnt >= s_usart2_rx_max)
+			if(HDSerial.mother_tx_cnt >= HDSerial.dash_rx_max)
 			{
 				USART_INTConfig(USART2, USART_INT_TDE, DISABLE);
-				s_usart2_rx_max = 9;
-				s_usart2_rx_cnt = 0;
-				uart3_tx_en = 0;
+				HDSerial.dash_rx_max = MIN_PKT_LEN;
+				HDSerial.dash_rx_cnt = 0;
+				HDSerial.mother_tx_en = false;
 			}
 		}
-  }
+	}
 }
 
-extern "C" void USART3_IRQHandler(void)
+extern "C" DASH_IRQ_HANDLER()
 {
-	uint8_t temp = 0x00;
+	//dash board data receive
 	if(USART_GetITStatus(USART3, USART_INT_RDNE) != RESET) {		
-		temp = USART_ReceiveData(USART3);
-		if(s_usart2_rx_cnt == 2) {
-			if(s_usart2_rx_buffer[s_usart2_rx_cnt-2] == 0x5a && \
-				s_usart2_rx_buffer[s_usart2_rx_cnt-1] == 0xa5)
-				s_usart2_rx_max += temp;
+		uint8_t temp = USART_ReceiveData(USART3);
+		if(HDSerial.dash_rx_cnt == 2) {
+			if(HDSerial.dash_rx_buf[HDSerial.dash_rx_cnt - 2] == 0x5a && \
+				HDSerial.dash_rx_buf[HDSerial.dash_rx_cnt - 1] == 0xa5)
+				HDSerial.dash_rx_max += temp;
 		}
-		s_usart2_rx_buffer[s_usart2_rx_cnt++] = temp;
+		HDSerial.dash_rx_buf[HDSerial.dash_rx_cnt++] = temp;
 		
-		if(s_usart2_rx_cnt >= s_usart2_rx_max) {
+		if(HDSerial.dash_rx_cnt >= HDSerial.dash_rx_max) {
 			USART_INTConfig(USART2, USART_INT_TDE, ENABLE);
-			s_usart3_tx_cnt = 0;
-			uart3_tx_en = 1;
+			HDSerial.mother_tx_cnt = 0;
+			HDSerial.mother_tx_en = true;
 		}
 		USART_ClearITPendingBit(USART3, USART_INT_RDNE);
 	}
 	
-  if(USART_GetITStatus(USART3, USART_INT_TDE) != RESET && uart2_tx_en)
+	//dash board data transfer
+  if(USART_GetITStatus(USART3, USART_INT_TDE) != RESET && HDSerial.dash_tx_en)
   {
-    /* write one byte to the transmit data register */
-    USART_SendData(USART3, s_usart3_rx_buffer[s_usart2_tx_cnt++]);
+    USART_SendData(USART3, HDSerial.mother_rx_buf[HDSerial.dash_tx_cnt++]);
 		
-		if(s_usart2_tx_cnt >= s_usart3_rx_max) {
+		if(HDSerial.dash_tx_cnt >= HDSerial.mother_rx_max) {
 			USART_INTConfig(USART3, USART_INT_TDE, DISABLE);
-			s_usart3_rx_max = 9;
-			s_usart3_rx_cnt = 0;
-			uart2_tx_en = 0;
+			HDSerial.mother_rx_max = 9;
+			HDSerial.mother_rx_cnt = 0;
+			HDSerial.dash_tx_en = false;
 		}
   }	
 }
@@ -233,7 +198,7 @@ bool HalfDuplexSerial::begin(void)
 
 uint8_t HalfDuplexSerial::Get_Remain_Bat(void)
 {
-	return Ui_Cmd_Recv_buf[13];
+	return HDSerial.ui_rx_buf[13];
 }
 
 uint8_t HalfDuplexSerial::Get_Remain_Mileage(void)
@@ -243,8 +208,8 @@ uint8_t HalfDuplexSerial::Get_Remain_Mileage(void)
 
 uint32_t HalfDuplexSerial::Get_Total_Mileage(void)
 {
-	return Ui_Cmd_Recv_buf[24] << 24 | Ui_Cmd_Recv_buf[23] << 16 |\
-		Ui_Cmd_Recv_buf[22] << 8 | Ui_Cmd_Recv_buf[21];
+	return HDSerial.ui_rx_buf[24] << 24 | HDSerial.ui_rx_buf[23] << 16 |\
+		HDSerial.ui_rx_buf[22] << 8 | HDSerial.ui_rx_buf[21];
 }
 
 void HalfDuplexSerial::HandleCmd(uint16_t command, uint16_t parameter)
@@ -254,16 +219,16 @@ void HalfDuplexSerial::HandleCmd(uint16_t command, uint16_t parameter)
 		uint8_t cmd_buf_getsta[] = {0x5a, 0xa5, 0x01, 0x3e, 0x20, 0x01, 0xb0, 0x20, 0xcf, 0xfe};
     if(command == 0){
         if(parameter == 0){
-            memcpy(Ui_Cmd_buf, cmd_buf_unlock, sizeof(cmd_buf_unlock));
-            Ui_Cmd_len = sizeof(cmd_buf_unlock);
+            memcpy(HDSerial.ui_tx_buf, cmd_buf_unlock, sizeof(cmd_buf_unlock));
+            HDSerial.ui_cmd_len = sizeof(cmd_buf_unlock);
 				} else {
-            memcpy(Ui_Cmd_buf, cmd_buf_lock, sizeof(cmd_buf_lock));
-            Ui_Cmd_len = sizeof(cmd_buf_lock);
+            memcpy(HDSerial.ui_tx_buf, cmd_buf_lock, sizeof(cmd_buf_lock));
+            HDSerial.ui_cmd_len = sizeof(cmd_buf_lock);
 				}
     } else if(command == 1){
-        memcpy(Ui_Cmd_buf, cmd_buf_getsta, sizeof(cmd_buf_getsta));
-        Ui_Cmd_len = sizeof(cmd_buf_getsta);
+        memcpy(HDSerial.ui_tx_buf, cmd_buf_getsta, sizeof(cmd_buf_getsta));
+        HDSerial.ui_cmd_len = sizeof(cmd_buf_getsta);
 		}
-		Ui_Cmd_cnt = 0;
-		Ui_Cmd_flag = true;
+		HDSerial.ui_cmd_cnt = 0;
+		HDSerial.ui_cmd_en = true;
 }
