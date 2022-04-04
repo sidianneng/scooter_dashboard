@@ -16,7 +16,6 @@ ScooterPwd::~ScooterPwd()
 
 void ScooterPwd::onCustomAttrConfig()
 {
-    SetCustomCacheEnable(true);
     SetCustomLoadAnimType(PageManager::LOAD_ANIM_OVER_BOTTOM, 1000, lv_anim_path_bounce);
 }
 

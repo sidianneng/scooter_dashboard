@@ -14,7 +14,6 @@ ScooterSetting::~ScooterSetting()
 
 void ScooterSetting::onCustomAttrConfig()
 {
-    SetCustomCacheEnable(true);
     SetCustomLoadAnimType(PageManager::LOAD_ANIM_NONE, 1000, lv_anim_path_bounce);
 }
 
