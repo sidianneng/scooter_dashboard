@@ -132,7 +132,8 @@ static void StatusBar_Update(lv_timer_t* timer)
 {
     /* satellite */
     HAL::GPS_Info_t gps;
-    actStatusBar->Pull("GPS", &gps, sizeof(gps));
+    //actStatusBar->Pull("GPS", &gps, sizeof(gps));
+    memset(&gps, 0x00, sizeof(gps));
     lv_label_set_text_fmt(ui.satellite.label, "%d", gps.satellites);
 
     DataProc::Storage_Basic_Info_t sdInfo;
@@ -305,7 +306,7 @@ void StatusBar::Init(lv_obj_t* par)
 
 DATA_PROC_INIT_DEF(StatusBar)
 {
-    account->Subscribe("GPS");
+    //account->Subscribe("GPS");
     account->Subscribe("Power");
     account->Subscribe("Clock");
     account->Subscribe("Storage");

@@ -26,7 +26,8 @@ static int onEvent(Account* account, Account::EventParam_t* param)
         else if (info->cmd == SYSCONFIG_CMD_SAVE)
         {
             HAL::GPS_Info_t gpsInfo;
-            account->Pull("GPS", &gpsInfo, sizeof(gpsInfo));
+            //account->Pull("GPS", &gpsInfo, sizeof(gpsInfo));
+            memset(&gpsInfo, 0x00, sizeof(gpsInfo));
 
             if(gpsInfo.isVaild)
             {
@@ -51,7 +52,7 @@ static int onEvent(Account* account, Account::EventParam_t* param)
 DATA_PROC_INIT_DEF(SysConfig)
 {
     account->Subscribe("Storage");
-    account->Subscribe("GPS");
+    //account->Subscribe("GPS");
     account->SetEventCallback(onEvent);
 
     memset(&sysConfig, 0, sizeof(sysConfig));

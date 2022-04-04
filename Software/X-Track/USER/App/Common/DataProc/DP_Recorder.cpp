@@ -225,7 +225,7 @@ DATA_PROC_INIT_DEF(Recorder)
     recorder.account = account;
     account->UserData = &recorder;
 
-    account->Subscribe("GPS");
+    //account->Subscribe("GPS");
     account->Subscribe("Clock");
     account->Subscribe("TrackFilter");
     account->SetEventCallback(onEvent);

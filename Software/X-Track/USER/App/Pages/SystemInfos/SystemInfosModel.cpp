@@ -8,7 +8,7 @@ void SystemInfosModel::Init()
     account = new Account("SystemInfosModel", DataProc::Center(), 0, this);
 
     account->Subscribe("SportStatus");
-    account->Subscribe("GPS");
+    //account->Subscribe("GPS");
     account->Subscribe("MAG");
     account->Subscribe("IMU");
     account->Subscribe("Clock");
@@ -48,7 +48,8 @@ void SystemInfosModel::GetGPSInfo(
 )
 {
     HAL::GPS_Info_t gps;
-    account->Pull("GPS", &gps, sizeof(gps));
+    //account->Pull("GPS", &gps, sizeof(gps));
+    memset(&gps, 0x00, sizeof(gps));
     *lat = (float)gps.latitude;
     *lng = (float)gps.longitude;
     *alt = gps.altitude;

@@ -18,7 +18,9 @@ static int onEvent(Account* account, Account::EventParam_t* param)
     }
 
     HAL::GPS_Info_t gps;
-    if (account->Pull("GPS", &gps, sizeof(gps)) != Account::RES_OK)
+    //if (account->Pull("GPS", &gps, sizeof(gps)) != Account::RES_OK)
+    memset(&gps, 0x00, sizeof(gps));
+    if(0)
     {
         return Account::RES_UNKNOW;
     }
@@ -52,7 +54,7 @@ static int onEvent(Account* account, Account::EventParam_t* param)
 
 DATA_PROC_INIT_DEF(TzConv)
 {
-    account->Subscribe("GPS");
+    //account->Subscribe("GPS");
     account->Subscribe("SysConfig");
     account->SetEventCallback(onEvent);
 }

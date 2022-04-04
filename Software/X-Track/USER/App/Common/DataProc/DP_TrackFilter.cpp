@@ -127,7 +127,7 @@ static int onEvent(Account* account, Account::EventParam_t* param)
 
 DATA_PROC_INIT_DEF(TrackFilter)
 {
-    account->Subscribe("GPS");
+    //account->Subscribe("GPS");
     account->SetEventCallback(onEvent);
 
     trackFilter.pointContainer = nullptr;

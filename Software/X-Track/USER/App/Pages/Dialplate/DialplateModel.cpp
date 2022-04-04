@@ -8,7 +8,7 @@ void DialplateModel::Init()
     account->Subscribe("SportStatus");
     account->Subscribe("Recorder");
     account->Subscribe("StatusBar");
-    account->Subscribe("GPS");
+    //account->Subscribe("GPS");
     account->Subscribe("MusicPlayer");
     account->SetEventCallback(onEvent);
 }
@@ -25,7 +25,8 @@ void DialplateModel::Deinit()
 bool DialplateModel::GetGPSReady()
 {
     HAL::GPS_Info_t gps;
-    account->Pull("GPS", &gps, sizeof(gps));
+    //account->Pull("GPS", &gps, sizeof(gps));
+    memset(&gps, 0x00, sizeof(gps));
     return (gps.satellites > 0);
 }
 

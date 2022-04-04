@@ -35,7 +35,8 @@ static double SportStatus_GetDistanceOffset(HAL::GPS_Info_t* gpsInfo)
 static void onTimer(Account* account)
 {
     HAL::GPS_Info_t gpsInfo;
-    account->Pull("GPS", &gpsInfo, sizeof(gpsInfo));
+    //account->Pull("GPS", &gpsInfo, sizeof(gpsInfo));
+    memset(&gpsInfo, 0x00, sizeof(gpsInfo));
 
     uint32_t timeElaps = DataProc::GetTickElaps(sportStatus.lastTick);
 
@@ -107,7 +108,7 @@ DATA_PROC_INIT_DEF(SportStatus)
     memset(&sportStatus, 0, sizeof(sportStatus));
     sportStatus.weight = CONFIG_WEIGHT_DEFAULT;
 
-    account->Subscribe("GPS");
+    //account->Subscribe("GPS");
     account->Subscribe("Storage");
 
     STORAGE_VALUE_REG(account, sportStatus.totalDistance, STORAGE_TYPE_FLOAT);

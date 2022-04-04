@@ -12,7 +12,7 @@ LiveMapModel::LiveMapModel()
 void LiveMapModel::Init()
 {
     account = new Account("LiveMapModel", DataProc::Center(), 0, this);
-    account->Subscribe("GPS");
+    //account->Subscribe("GPS");
     account->Subscribe("SportStatus");
     account->Subscribe("TrackFilter");
     account->Subscribe("SysConfig");
@@ -30,7 +30,8 @@ void LiveMapModel::Deinit()
 
 void LiveMapModel::GetGPS_Info(HAL::GPS_Info_t* info)
 {
-    account->Pull("GPS", info, sizeof(HAL::GPS_Info_t));
+    //account->Pull("GPS", info, sizeof(HAL::GPS_Info_t));
+    memset(&info, 0x00, sizeof(info));
 
     /* Default location : Tian An Men */
     if (!info->isVaild)
