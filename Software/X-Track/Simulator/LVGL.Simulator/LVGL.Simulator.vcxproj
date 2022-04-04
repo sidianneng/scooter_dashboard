@@ -286,7 +286,7 @@
     <ClCompile Include="..\..\USER\App\App.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DataProc.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Clock.cpp" />
-    <ClCompile Include="..\..\USER\App\Common\DataProc\DP_GPS.cpp" />
+    <ClCompile Include="..\..\USER\App\Common\DataProc\DP_HalfDuplexSerial.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_IMU.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_MAG.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_MusicPlayer.cpp" />
@@ -417,6 +417,7 @@
     <ClCompile Include="HAL\HAL_Clock.cpp" />
     <ClCompile Include="HAL\HAL_Encoder.cpp" />
     <ClCompile Include="HAL\HAL_GPS.cpp" />
+    <ClCompile Include="HAL\HAL_HalfDuplexSerial.cpp" />
     <ClCompile Include="HAL\HAL_IMU.cpp" />
     <ClCompile Include="HAL\HAL_MAG.cpp" />
     <ClCompile Include="HAL\HAL_Ninebot.cpp" />

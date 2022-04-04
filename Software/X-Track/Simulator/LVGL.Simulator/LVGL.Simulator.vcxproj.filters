@@ -1712,9 +1712,6 @@
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Clock.cpp">
       <Filter>App\Common\DataProc</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\USER\App\Common\DataProc\DP_GPS.cpp">
-      <Filter>App\Common\DataProc</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Power.cpp">
       <Filter>App\Common\DataProc</Filter>
     </ClCompile>
@@ -2155,6 +2152,12 @@
     </ClCompile>
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_transparent_bg_small.c">
       <Filter>App\Resource\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="HAL\HAL_HalfDuplexSerial.cpp">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Common\DataProc\DP_HalfDuplexSerial.cpp">
+      <Filter>App\Common\DataProc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
