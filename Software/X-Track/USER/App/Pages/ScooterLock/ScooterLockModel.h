@@ -16,7 +16,7 @@ public:
     void Init();
     void Deinit();
     void LockScooter();
-    void UnlockScooter();
+
 private:
     Account* account;
 };

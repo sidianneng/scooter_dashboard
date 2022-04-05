@@ -31,14 +31,4 @@ void ScooterLockModel::LockScooter()
     
     account->Notify("HalfDuplexSerial", &serInfo, sizeof(serInfo));
 }
-	
-void ScooterLockModel::UnlockScooter()
-{
-    HAL::HalfDuplexSerial_BSP_Info_t serInfo;
-	
-    serInfo.command = 0;
-    serInfo.parameter = false;
-    
-    account->Notify("HalfDuplexSerial", &serInfo, sizeof(serInfo));
-}
 

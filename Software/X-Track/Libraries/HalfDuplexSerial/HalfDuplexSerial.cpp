@@ -234,6 +234,7 @@ void HalfDuplexSerial::HandleCmd(uint16_t command, uint16_t parameter)
 		uint8_t cmd_buf_setrecovery[] = {0x5a, 0xa5, 0x02, 0x3e, 0x20, 0x03, 0x7b, 0x02, 0x00, 0x1f, 0xff,\
 		                               0x5a, 0xa5, 0x01, 0x3e, 0x20, 0x01, 0x7b, 0x02, 0x22, 0xff};
 		
+    //Serial.printf("cmd %d, param %d\n", command, parameter);
     if(command == 0){
         if(parameter == 0){
             memcpy(HDSerial.ui_tx_buf, cmd_buf_unlock, sizeof(cmd_buf_unlock));

@@ -35,6 +35,7 @@ void ScooterPwd::onViewDidLoad()
 
 void ScooterPwd::onViewWillAppear()
 {
+    Model.Init();
     Param_t param;
     param.color = lv_color_white();
     param.time = 1000;
@@ -58,6 +59,7 @@ void ScooterPwd::onViewWillDisappear()
 void ScooterPwd::onViewDidDisappear()
 {
     lv_timer_del(timer);
+    Model.Deinit();
 }
 
 void ScooterPwd::onViewDidUnload()
@@ -96,6 +98,7 @@ void ScooterPwd::onEvent(lv_event_t* event)
     // back to the unlock panel
     if (code == LV_EVENT_READY) {
         printf("pwd OK~");
+        instance->Model.UnlockScooter();
         instance->Manager->Pop();
     }
 

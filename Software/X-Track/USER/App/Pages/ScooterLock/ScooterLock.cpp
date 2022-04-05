@@ -142,7 +142,6 @@ void ScooterLock::onEvent(lv_event_t* event)
                 instance->SetBtnRecImgSrc("unlock");
                 instance->locked = false;
                 instance->Manager->Push("Pages/ScooterPwd");
-							  instance->Model.UnlockScooter();
             }
         }
     }
