@@ -20,15 +20,6 @@ void ScooterSettingView::Create(lv_obj_t* root)
     energy_Create(cont);
 }
 
-static void event_handler_sw(lv_event_t* e)
-{
-    lv_event_code_t code = lv_event_get_code(e);
-    lv_obj_t* obj = lv_event_get_target(e);
-    if (code == LV_EVENT_VALUE_CHANGED) {
-        LV_LOG_USER("Cruise State: %s\n", lv_obj_has_state(obj, LV_STATE_CHECKED) ? "On" : "Off");
-    }
-}
-
 void ScooterSettingView::cruise_Create(lv_obj_t* root)
 {
     //create label
@@ -43,19 +34,9 @@ void ScooterSettingView::cruise_Create(lv_obj_t* root)
     lv_obj_t* sw = lv_switch_create(root);
     lv_obj_add_state(sw, LV_STATE_CHECKED);
     lv_obj_align(sw, LV_ALIGN_CENTER, 50, -50);
-    lv_obj_add_event_cb(sw, event_handler_sw, LV_EVENT_ALL, NULL);
     ui.cruise_check = sw;
-}
 
-static void event_handler(lv_event_t* e)
-{
-    lv_event_code_t code = lv_event_get_code(e);
-    lv_obj_t* obj = lv_event_get_target(e);
-    if (code == LV_EVENT_VALUE_CHANGED) {
-        char buf[32];
-        lv_roller_get_selected_str(obj, buf, sizeof(buf));
-        LV_LOG_USER("Selected mode: %s\n", buf);
-    }
+    lv_obj_set_style_bg_img_src(ui.cruise_check, ResourcePool::GetImage("start"), 0);
 }
 
 void ScooterSettingView::energy_Create(lv_obj_t* root)
@@ -80,7 +61,8 @@ void ScooterSettingView::energy_Create(lv_obj_t* root)
     lv_obj_set_style_text_font(roller, ResourcePool::GetFont("bahnschrift_17"), 0);
     lv_obj_set_style_text_color(roller, lv_color_hex(0xff0000), 0);
     lv_roller_set_visible_row_count(roller, 2);
+    lv_roller_set_selected(roller, 0, LV_ANIM_ON);
     lv_obj_align(roller, LV_ALIGN_CENTER, 50, 50);
-    lv_obj_add_event_cb(roller, event_handler, LV_EVENT_ALL, NULL);
+
     ui.energy_dd = roller;
 }
