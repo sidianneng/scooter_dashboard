@@ -212,11 +212,28 @@ uint32_t HalfDuplexSerial::Get_Total_Mileage(void)
 		HDSerial.ui_rx_buf[22] << 8 | HDSerial.ui_rx_buf[21];
 }
 
+uint8_t HalfDuplexSerial::Get_Cruise_State(void)
+{
+	return HDSerial.ui_rx_buf[7];
+}
+
+uint8_t HalfDuplexSerial::Get_Recovery_State(void)
+{
+	return HDSerial.ui_rx_buf[7];
+}
+
 void HalfDuplexSerial::HandleCmd(uint16_t command, uint16_t parameter)
 {
     uint8_t cmd_buf_lock[]   = {0x5a, 0xa5, 0x02, 0x3e, 0x20, 0x03, 0x70, 0x01, 0x00, 0x2b, 0xff};
 		uint8_t cmd_buf_unlock[] = {0x5a, 0xa5, 0x02, 0x3e, 0x20, 0x03, 0x71, 0x01, 0x00, 0x2a, 0xff};
 		uint8_t cmd_buf_getsta[] = {0x5a, 0xa5, 0x01, 0x3e, 0x20, 0x01, 0xb0, 0x20, 0xcf, 0xfe};
+		uint8_t cmd_buf_getcruise[] = {0x5a, 0xa5, 0x01, 0x3e, 0x20, 0x01, 0x7c, 0x02, 0x21, 0xff};
+		uint8_t cmd_buf_getrecv[] =   {0x5a, 0xa5, 0x01, 0x3e, 0x20, 0x01, 0x7b, 0x02, 0x22, 0xff};
+		uint8_t cmd_buf_setcruise[] = {0x5a, 0xa5, 0x02, 0x3e, 0x20, 0x03, 0x7c, 0x01, 0x00, 0x1f, 0xff, \
+		                               0x5a, 0xa5, 0x01, 0x3e, 0x20, 0x01, 0x7c, 0x02, 0x21, 0xff};
+		uint8_t cmd_buf_setrecovery[] = {0x5a, 0xa5, 0x02, 0x3e, 0x20, 0x03, 0x7b, 0x02, 0x00, 0x1f, 0xff,\
+		                               0x5a, 0xa5, 0x01, 0x3e, 0x20, 0x01, 0x7b, 0x02, 0x22, 0xff};
+		
     if(command == 0){
         if(parameter == 0){
             memcpy(HDSerial.ui_tx_buf, cmd_buf_unlock, sizeof(cmd_buf_unlock));
@@ -228,6 +245,30 @@ void HalfDuplexSerial::HandleCmd(uint16_t command, uint16_t parameter)
     } else if(command == 1){
         memcpy(HDSerial.ui_tx_buf, cmd_buf_getsta, sizeof(cmd_buf_getsta));
         HDSerial.ui_cmd_len = sizeof(cmd_buf_getsta);
+		} else if(command == 2){
+        memcpy(HDSerial.ui_tx_buf, cmd_buf_getcruise, sizeof(cmd_buf_getcruise));
+        HDSerial.ui_cmd_len = sizeof(cmd_buf_getcruise);
+		} else if(command == 4){
+        memcpy(HDSerial.ui_tx_buf, cmd_buf_getrecv, sizeof(cmd_buf_getrecv));
+        HDSerial.ui_cmd_len = sizeof(cmd_buf_getrecv);
+		} else if(command == 6){
+        cmd_buf_setcruise[7] = parameter;
+			  if(parameter != 0)
+					cmd_buf_setcruise[9] = 0x1f;
+				else
+					cmd_buf_setcruise[9] = 0x20;
+        memcpy(HDSerial.ui_tx_buf, cmd_buf_setcruise, sizeof(cmd_buf_setcruise));
+        HDSerial.ui_cmd_len = sizeof(cmd_buf_setcruise);
+		} else if(command == 7){
+			  cmd_buf_setrecovery[7] = parameter;
+			  if(parameter == 0)
+					cmd_buf_setrecovery[9] = 0x21;
+				else if(parameter == 1)
+					cmd_buf_setrecovery[9] = 0x20;
+				else if(parameter == 2)
+					cmd_buf_setrecovery[9] = 0x1f;
+        memcpy(HDSerial.ui_tx_buf, cmd_buf_setrecovery, sizeof(cmd_buf_setrecovery));
+        HDSerial.ui_cmd_len = sizeof(cmd_buf_setrecovery);
 		}
 		HDSerial.ui_cmd_cnt = 0;
 		HDSerial.ui_cmd_en = true;

@@ -38,7 +38,11 @@ void HAL::HalfDuplexSerial_Handle_UI_Cmd(HalfDuplexSerial_BSP_Info_t* info)
         info->remain_battery = rand() % 100;
 		info->remain_mileage = rand() % 25;
         info->total_mileage = 1234000;
-	} else {
+	} else if (info->command == 0x03) {
+        info->cruise_contrl = 0;
+    } else if (info->command == 0x05) {
+        info->energy_recovery = 0;
+    } else {
         printf("halfduplex serial handle cmd:%#x, param:%#x\n", info->command, info->parameter);
 	}
 }

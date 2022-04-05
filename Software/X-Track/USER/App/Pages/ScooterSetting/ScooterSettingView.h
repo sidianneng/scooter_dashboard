@@ -10,6 +10,8 @@ class ScooterSettingView
 {
 public:
     void Create(lv_obj_t* root);
+    void Switch_UI_Update(bool state);
+    void Roller_UI_Update(uint8_t state);
 
 public:
     struct

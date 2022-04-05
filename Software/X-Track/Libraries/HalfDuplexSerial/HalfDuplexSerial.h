@@ -14,6 +14,9 @@ public:
 	uint8_t Get_Remain_Bat(void); //uint:1%
 	uint8_t Get_Remain_Mileage(void); //unit:meter
 	uint32_t Get_Total_Mileage(void); //unit:meter
+
+  uint8_t Get_Cruise_State(void);
+  uint8_t Get_Recovery_State(void);
 	
 	void HandleCmd(uint16_t command, uint16_t parameter);
 };

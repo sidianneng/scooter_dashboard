@@ -52,7 +52,6 @@ void ScooterSettingView::energy_Create(lv_obj_t* root)
     //create the roller
     lv_obj_t* roller = lv_roller_create(root);
     lv_roller_set_options(roller,
-        "Close\n"
         "Low\n"
         "Middle\n"
         "High",
@@ -65,4 +64,19 @@ void ScooterSettingView::energy_Create(lv_obj_t* root)
     lv_obj_align(roller, LV_ALIGN_CENTER, 50, 50);
 
     ui.energy_dd = roller;
+}
+
+void ScooterSettingView::Switch_UI_Update(bool state)
+{
+    if(!state)
+        lv_obj_set_style_bg_img_src(ui.cruise_check, \
+		        ResourcePool::GetImage("start"), 0);
+		else
+        lv_obj_set_style_bg_img_src(ui.cruise_check, \
+		        ResourcePool::GetImage("stop"), 0);
+}
+
+void ScooterSettingView::Roller_UI_Update(uint8_t state)
+{
+    lv_roller_set_selected(ui.energy_dd, state, LV_ANIM_ON);
 }

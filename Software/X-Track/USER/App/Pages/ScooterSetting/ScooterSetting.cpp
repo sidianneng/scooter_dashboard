@@ -5,6 +5,7 @@ using namespace Page;
 ScooterSetting::ScooterSetting()
     : timer(nullptr)
 {
+
 }
 
 ScooterSetting::~ScooterSetting()
@@ -33,11 +34,11 @@ void ScooterSetting::onViewLoad()
 
 void ScooterSetting::onViewDidLoad()
 {
-
 }
 
 void ScooterSetting::onViewWillAppear()
 {
+    Model.Init();
     Param_t param;
     param.color = lv_color_white();
     param.time = 1000;
@@ -50,7 +51,16 @@ void ScooterSetting::onViewWillAppear()
 
 void ScooterSetting::onViewDidAppear()
 {
-
+    uint8_t cruise_state;
+    uint8_t recovery_state;
+	
+	  Model.Send_Get_Cruise_Cmd();
+    Model.Get_Cruise_State(&cruise_state);
+    View.Switch_UI_Update((bool)cruise_state);
+	
+    Model.Send_Get_Recovery_Cmd();
+    Model.Get_Recovery_State(&recovery_state);
+    View.Roller_UI_Update(recovery_state);
 }
 
 void ScooterSetting::onViewWillDisappear()
@@ -61,6 +71,7 @@ void ScooterSetting::onViewWillDisappear()
 void ScooterSetting::onViewDidDisappear()
 {
     lv_timer_del(timer);
+    Model.Deinit();
 }
 
 void ScooterSetting::onViewDidUnload()
@@ -76,7 +87,7 @@ void ScooterSetting::AttachEvent(lv_obj_t* obj)
 
 void ScooterSetting::Update()
 {
-    //lv_label_set_text_fmt(View.ui.labelTick, "tick = %d save = %d", Model.GetData(), Model.TickSave);
+
 }
 
 void ScooterSetting::onTimerUpdate(lv_timer_t* timer)
@@ -135,15 +146,19 @@ void ScooterSetting::onEvent(lv_event_t* event)
     if (code == LV_EVENT_VALUE_CHANGED) {
         if (obj == instance->View.ui.cruise_check) {
             LV_LOG_USER("Cruise State: %s\n", lv_obj_has_state(obj, LV_STATE_CHECKED) ? "On" : "Off");
-            if (lv_obj_has_state(obj, LV_STATE_CHECKED))
+            if (lv_obj_has_state(obj, LV_STATE_CHECKED)){
+							  instance->Model.Set_Cruise_State(false);
                 instance->SetSwitchImgSrc("start");
-            else
+            }else{
+							  instance->Model.Set_Cruise_State(true);
                 instance->SetSwitchImgSrc("stop");
+						}
         }
         if (obj == instance->View.ui.energy_dd) {
             char buf[32];
             lv_roller_get_selected_str(obj, buf, sizeof(buf));
             LV_LOG_USER("Selected mode: %s index: %d\n", buf, lv_roller_get_selected(obj));
+					  instance->Model.Set_Recovery_State((uint8_t)lv_roller_get_selected(obj));
         }
     }
 }
