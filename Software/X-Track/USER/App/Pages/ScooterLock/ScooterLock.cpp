@@ -5,6 +5,7 @@ using namespace Page;
 ScooterLock::ScooterLock()
     : timer(nullptr)
 {
+    locked = false;
 }
 
 ScooterLock::~ScooterLock()
