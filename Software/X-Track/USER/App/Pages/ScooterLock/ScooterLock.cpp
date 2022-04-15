@@ -101,10 +101,10 @@ void ScooterLock::onEvent(lv_event_t* event)
 
     if (obj == instance->root)
     {
-        if (code == LV_EVENT_GESTURE)
+        if (code == LV_EVENT_GESTURE && !instance->locked)
         {
             lv_dir_t dir = lv_indev_get_gesture_dir(lv_indev_get_act());
-            //printf("scooterlock gesture 0x%x 0x%x\n", dir, lv_scr_act()->flags);
+            //printf("scooterlock gesture 0x%x 0x%x lck:%d\n", dir, lv_scr_act()->flags, instance->locked);
             if (lv_scr_act()->flags & LV_OBJ_FLAG_USER_1) {
                 if (dir == LV_DIR_RIGHT) {
                     
