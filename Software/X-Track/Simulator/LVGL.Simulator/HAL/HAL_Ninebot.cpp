@@ -11,6 +11,7 @@ void HAL::Scooter_Update()
 
 	scooter_info.speed = rand() % 20;
     scooter_info.battery = rand() % 32;
+    scooter_info.other_icons = rand();
 	
 	if(CommitFunc)
     {

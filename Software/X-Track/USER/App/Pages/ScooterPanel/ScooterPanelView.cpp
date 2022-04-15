@@ -157,18 +157,18 @@ void ScooterPanelView::Update_Other_Icons(uint32_t icons)
 	
 	if(icons & 0x00000080)
 		sprintf(icon_name_buf, "sptmode_r");
-	if(icons & 0x00000001)
+	else if(icons & 0x00000001)
 		sprintf(icon_name_buf, "sptmode_b");
-	if(icons & 0x00000081 == 0x00)
+    else
 		sprintf(icon_name_buf, "transparent_bg");
 	lv_obj_set_style_bg_img_src(ui.panelInfo.labelSptMode, ResourcePool::GetImage(icon_name_buf), 0);
 	
 	if(icons & 0x00000002)
 		sprintf(icon_name_buf, "kmh");
-	if(icons & 0x00000010)
+	else if(icons & 0x00000010)
 		sprintf(icon_name_buf, "mph");
-	if(icons & 0x00000012 == 0x00)
-		sprintf(icon_name_buf, "transparent_bg");
+    else
+		sprintf(icon_name_buf, "transparent_bg_small");
 	lv_obj_set_style_bg_img_src(ui.panelInfo.labelSpdUint, ResourcePool::GetImage(icon_name_buf), 0);
 	
 	if(icons & 0x00000008)
