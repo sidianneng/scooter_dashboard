@@ -50,7 +50,7 @@ void ScooterPanel::onViewWillAppear()
     Model.Init();
     Param_t param;
     param.color = lv_color_white();
-    param.time = 1000;
+    param.time = 500;
 
     PAGE_STASH_POP(param);
 
