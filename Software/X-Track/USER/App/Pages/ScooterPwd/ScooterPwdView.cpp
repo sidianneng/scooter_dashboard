@@ -10,16 +10,13 @@ void ScooterPwdView::Create(lv_obj_t* root)
     lv_obj_remove_style_all(cont);
     lv_obj_set_size(cont, LV_HOR_RES, LV_VER_RES);
 
-    lv_obj_center(cont);
-    lv_obj_set_style_radius(cont, LV_RADIUS_CIRCLE, 0);
-
     lv_obj_set_style_bg_opa(cont, LV_OPA_COVER, 0);
     lv_obj_set_style_bg_color(cont, lv_color_hex(0x000000), 0);
 
-    ui.cont = cont;
+    ui.cont = root;
 
-    ui.textarea = Pwd_Textarea_Create(cont);
-    ui.keyboard = Pwd_Keyboard_Create(cont);
+    ui.textarea = Pwd_Textarea_Create(root);
+    ui.keyboard = Pwd_Keyboard_Create(root);
 }
 
 lv_obj_t* ScooterPwdView::Pwd_Textarea_Create(lv_obj_t* root)
