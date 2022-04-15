@@ -23,7 +23,8 @@ public:
 
 private:
     lv_obj_t* Info_Create(lv_obj_t* obj,
-        const char* labelText, lv_coord_t x_ofs, lv_coord_t y_ofs);
+        const char* labelText, const char* labeltitleText, \
+        lv_coord_t x_ofs, lv_coord_t y_ofs);
 };
 
 }
