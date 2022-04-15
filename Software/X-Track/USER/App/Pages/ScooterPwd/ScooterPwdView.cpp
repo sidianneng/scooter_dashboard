@@ -22,6 +22,7 @@ void ScooterPwdView::Create(lv_obj_t* root)
 lv_obj_t* ScooterPwdView::Pwd_Textarea_Create(lv_obj_t* root)
 {
     lv_obj_t* ta = lv_textarea_create(root);
+    lv_obj_set_style_text_font(ta, ResourcePool::GetFont("bahnschrift_36"), 0);
     lv_obj_set_style_text_color(ta, lv_color_hex(0xffffff), 0);
     lv_textarea_set_password_mode(ta, true);
     lv_textarea_set_one_line(ta, true);
@@ -40,6 +41,7 @@ lv_obj_t* ScooterPwdView::Pwd_Keyboard_Create(lv_obj_t* root)
 
     lv_obj_t* btnm = lv_btnmatrix_create(root);
     lv_obj_set_style_text_color(btnm, lv_color_hex(0xffffff), 0);
+    lv_obj_set_style_text_font(btnm, ResourcePool::GetFont("bahnschrift_36"), 0);
     lv_obj_set_size(btnm, 200, 150);
     lv_obj_align(btnm, LV_ALIGN_BOTTOM_MID, 0, -10);
     lv_obj_clear_flag(btnm, LV_OBJ_FLAG_CLICK_FOCUSABLE); /*To keep the text area focused on button clicks*/
