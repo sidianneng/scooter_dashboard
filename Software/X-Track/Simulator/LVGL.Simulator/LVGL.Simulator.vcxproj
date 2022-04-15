@@ -369,6 +369,8 @@
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_start.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_stop.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_storage.c" />
+    <ClCompile Include="..\..\USER\App\Resource\Image\img_src_switch_off.c" />
+    <ClCompile Include="..\..\USER\App\Resource\Image\img_src_switch_on.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_system_info.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_temperature.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_time_info.c" />

@@ -69,6 +69,8 @@ do{\
         IMPORT_IMG(transparent_bg);
         IMPORT_IMG(transparent_bg_small);
         IMPORT_IMG(power_key);
+        IMPORT_IMG(switch_on);
+        IMPORT_IMG(switch_off);
     }
 
 } /* extern "C" */

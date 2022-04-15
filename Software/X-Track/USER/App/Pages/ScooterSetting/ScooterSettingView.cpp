@@ -24,28 +24,29 @@ void ScooterSettingView::cruise_Create(lv_obj_t* root)
 {
     //create label
     lv_obj_t* label = lv_label_create(root);
-    lv_obj_align(label, LV_ALIGN_CENTER, -50, -50);
-    lv_obj_set_style_text_font(label, ResourcePool::GetFont("bahnschrift_13"), 0);
-    lv_obj_set_style_text_color(label, lv_color_hex(0xff0000), 0);
+    lv_obj_align(label, LV_ALIGN_CENTER, -40, -60);
+    lv_obj_set_style_text_font(label, (lv_font_t*)&lv_font_montserrat_22, 0);
+    lv_obj_set_style_text_color(label, lv_color_hex(0xffffff), 0);
     lv_label_set_text(label, "Cruise:");
     ui.label_cruise = label;
 
     //creat switch
     lv_obj_t* sw = lv_switch_create(root);
     lv_obj_add_state(sw, LV_STATE_CHECKED);
-    lv_obj_align(sw, LV_ALIGN_CENTER, 50, -50);
+    lv_obj_align(sw, LV_ALIGN_CENTER, 40, -60);
+    lv_obj_set_size(sw, 60, 40);
     ui.cruise_check = sw;
 
-    lv_obj_set_style_bg_img_src(ui.cruise_check, ResourcePool::GetImage("start"), 0);
+    lv_obj_set_style_bg_img_src(ui.cruise_check, ResourcePool::GetImage("switch_on"), 0);
 }
 
 void ScooterSettingView::energy_Create(lv_obj_t* root)
 {
     //create label
     lv_obj_t* label = lv_label_create(root);
-    lv_obj_align(label, LV_ALIGN_CENTER, -50, 50);
-    lv_obj_set_style_text_font(label, ResourcePool::GetFont("bahnschrift_13"), 0);
-    lv_obj_set_style_text_color(label, lv_color_hex(0xff0000), 0);
+    lv_obj_align(label, LV_ALIGN_CENTER, -40, 0);
+    lv_obj_set_style_text_font(label, (lv_font_t*)&lv_font_montserrat_22, 0);
+    lv_obj_set_style_text_color(label, lv_color_hex(0xffffff), 0);
     lv_label_set_text(label, "Energy:");
     ui.label_energy = label;
 
@@ -57,11 +58,11 @@ void ScooterSettingView::energy_Create(lv_obj_t* root)
         "High",
         LV_ROLLER_MODE_INFINITE);
 
-    lv_obj_set_style_text_font(roller, ResourcePool::GetFont("bahnschrift_17"), 0);
+    lv_obj_set_style_text_font(roller, (lv_font_t*)&lv_font_montserrat_22, 0);
     lv_obj_set_style_text_color(roller, lv_color_hex(0xff0000), 0);
     lv_roller_set_visible_row_count(roller, 2);
     lv_roller_set_selected(roller, 0, LV_ANIM_ON);
-    lv_obj_align(roller, LV_ALIGN_CENTER, 50, 50);
+    lv_obj_align(roller, LV_ALIGN_CENTER, 50, 0);
 
     ui.energy_dd = roller;
 }
@@ -70,10 +71,10 @@ void ScooterSettingView::Switch_UI_Update(bool state)
 {
     if(!state)
         lv_obj_set_style_bg_img_src(ui.cruise_check, \
-		        ResourcePool::GetImage("start"), 0);
+		        ResourcePool::GetImage("switch_on"), 0);
 		else
         lv_obj_set_style_bg_img_src(ui.cruise_check, \
-		        ResourcePool::GetImage("stop"), 0);
+		        ResourcePool::GetImage("switch_on"), 0);
 }
 
 void ScooterSettingView::Roller_UI_Update(uint8_t state)

@@ -148,10 +148,10 @@ void ScooterSetting::onEvent(lv_event_t* event)
             LV_LOG_USER("Cruise State: %s\n", lv_obj_has_state(obj, LV_STATE_CHECKED) ? "On" : "Off");
             if (lv_obj_has_state(obj, LV_STATE_CHECKED)){
 							  instance->Model.Set_Cruise_State(false);
-                instance->SetSwitchImgSrc("start");
+                instance->SetSwitchImgSrc("switch_on");
             }else{
 							  instance->Model.Set_Cruise_State(true);
-                instance->SetSwitchImgSrc("stop");
+                instance->SetSwitchImgSrc("switch_off");
 						}
         }
         if (obj == instance->View.ui.energy_dd) {
