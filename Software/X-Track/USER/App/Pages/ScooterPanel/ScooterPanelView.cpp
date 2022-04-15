@@ -63,7 +63,7 @@ void ScooterPanelView::Button_Create(lv_obj_t* par)
     lv_obj_set_size(cont, LV_HOR_RES, 80);
     lv_obj_align_to(cont, ui.panelInfo.cont, LV_ALIGN_OUT_BOTTOM_MID, 0, 0);
 
-    ui.btnCont.btnPower = Btn_Create(cont, ResourcePool::GetImage("start"), 0);
+    ui.btnCont.btnPower = Btn_Create(cont, ResourcePool::GetImage("power_key"), 0);
 }
 
 lv_obj_t* ScooterPanelView::Btn_Create(lv_obj_t* par, const void* img_src, lv_coord_t x_ofs)

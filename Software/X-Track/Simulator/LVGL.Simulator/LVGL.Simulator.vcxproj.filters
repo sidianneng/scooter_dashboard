@@ -2159,6 +2159,9 @@
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_HalfDuplexSerial.cpp">
       <Filter>App\Common\DataProc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\USER\App\Resource\Image\img_src_power_key.c">
+      <Filter>App\Resource\Image</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="lvgl\.github\ISSUE_TEMPLATE\bug-report.md">

@@ -68,6 +68,7 @@ do{\
         IMPORT_IMG(unlock);
         IMPORT_IMG(transparent_bg);
         IMPORT_IMG(transparent_bg_small);
+        IMPORT_IMG(power_key);
     }
 
 } /* extern "C" */

@@ -361,6 +361,7 @@
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_mph.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_origin_point.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_pause.c" />
+    <ClCompile Include="..\..\USER\App\Resource\Image\img_src_power_key.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_satellite.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_sd_card.c" />
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_sptmode_b.c" />
