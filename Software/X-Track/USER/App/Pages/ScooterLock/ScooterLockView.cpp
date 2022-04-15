@@ -38,7 +38,6 @@ lv_obj_t* ScooterLockView::Btn_Create(lv_obj_t* par, const void* img_src, lv_coo
     lv_obj_set_style_height(obj, LV_VER_RES, LV_STATE_PRESSED);
     lv_obj_set_style_bg_color(obj, lv_color_hex(0x0), 0);
     lv_obj_set_style_bg_color(obj, lv_color_hex(0x0), LV_STATE_PRESSED);
-    lv_obj_set_style_radius(obj, 120, 0);
 
     static lv_style_transition_dsc_t tran;
     static const lv_style_prop_t prop[] = { LV_STYLE_WIDTH, LV_STYLE_HEIGHT, LV_STYLE_PROP_INV };
