@@ -2180,6 +2180,21 @@
               <FileType>1</FileType>
               <FilePath>..\USER\App\Resource\Image\img_src_transparent_bg_small.c</FilePath>
             </File>
+            <File>
+              <FileName>img_src_power_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\App\Resource\Image\img_src_power_key.c</FilePath>
+            </File>
+            <File>
+              <FileName>img_src_switch_off.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\App\Resource\Image\img_src_switch_off.c</FilePath>
+            </File>
+            <File>
+              <FileName>img_src_switch_on.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\App\Resource\Image\img_src_switch_on.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
