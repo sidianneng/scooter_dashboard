@@ -327,10 +327,7 @@ void Adafruit_ST7789::begin()
 	delay(120);
 		
 	writeCommand(0x11);
-	delay(120);
-	writeCommand(0x29);
-	delay(120);
-	//writeCommand(0x2C);		
+	delay(120);	
 }
 
 void Adafruit_ST7789::spiWrite(uint8_t data)
@@ -606,6 +603,14 @@ void Adafruit_ST7789::fillScreen(uint16_t color)
             writeData16(color);
         }
     }
+		
+		/*
+	  In order to fix the random data display on the lcd
+		before the LCD memory is initialized.
+		We turn on the LCD display after the fillscreen.
+		*/
+		writeCommand(0x29);
+		delay(120);
 }
 
 void Adafruit_ST7789::drawFastRGBBitmap(int16_t x, int16_t y, uint16_t *bitmap, int16_t w, int16_t h)
