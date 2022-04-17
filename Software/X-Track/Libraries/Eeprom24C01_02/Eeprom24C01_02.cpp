@@ -31,7 +31,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-#include <Eeprom24C01_02.h>
+#include "Eeprom24C01_02.h"
 
 /******************************************************************************
  * Private macro definitions.
@@ -49,6 +49,7 @@
  * \brief Size of input TWI buffer.
  * This size is equal to BUFFER_LENGTH defined in Wire library (32 bytes).
  ******************************************************************************/
+#define BUFFER_LENGTH 32
 #define EEPROM__RD_BUFFER_SIZE    BUFFER_LENGTH
 
 /**************************************************************************//**

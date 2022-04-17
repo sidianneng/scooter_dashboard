@@ -4238,6 +4238,11 @@
               <FileType>8</FileType>
               <FilePath>..\Libraries\HalfDuplexSerial\HalfDuplexSerial.cpp</FilePath>
             </File>
+            <File>
+              <FileName>Eeprom24C01_02.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Libraries\Eeprom24C01_02\Eeprom24C01_02.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
