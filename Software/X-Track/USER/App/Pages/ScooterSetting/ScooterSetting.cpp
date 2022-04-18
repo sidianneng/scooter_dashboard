@@ -28,6 +28,7 @@ void ScooterSetting::onViewLoad()
     AttachEvent(View.ui.energy_dd);
     AttachEvent(View.ui.label_cruise);
     AttachEvent(View.ui.label_energy);
+    AttachEvent(View.ui.config_pwd);
 
     Model.TickSave = Model.GetData();
 }
@@ -159,6 +160,12 @@ void ScooterSetting::onEvent(lv_event_t* event)
             lv_roller_get_selected_str(obj, buf, sizeof(buf));
             LV_LOG_USER("Selected mode: %s index: %d\n", buf, lv_roller_get_selected(obj));
 					  instance->Model.Set_Recovery_State((uint8_t)lv_roller_get_selected(obj));
+        }
+    }
+
+    if (code == LV_EVENT_SHORT_CLICKED) {
+        if (obj == instance->View.ui.config_pwd) {
+            LV_LOG_USER("pwd config pressed\n");
         }
     }
 }

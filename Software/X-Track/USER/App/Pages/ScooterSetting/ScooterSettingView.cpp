@@ -18,6 +18,7 @@ void ScooterSettingView::Create(lv_obj_t* root)
 
     cruise_Create(cont);
     energy_Create(cont);
+    pwdset_Create(cont);
 }
 
 void ScooterSettingView::cruise_Create(lv_obj_t* root)
@@ -65,6 +66,24 @@ void ScooterSettingView::energy_Create(lv_obj_t* root)
     lv_obj_align(roller, LV_ALIGN_CENTER, 50, 0);
 
     ui.energy_dd = roller;
+}
+
+void ScooterSettingView::pwdset_Create(lv_obj_t* root)
+{
+    lv_obj_t* cont = lv_obj_create(root);
+    lv_obj_remove_style_all(cont);
+    lv_obj_set_size(cont, LV_HOR_RES, 40);
+    lv_obj_set_style_bg_opa(cont, LV_OPA_COVER, 0);
+    lv_obj_align(cont, LV_ALIGN_CENTER, 0, 70);
+    lv_obj_set_style_bg_color(cont, lv_color_white(), 0);
+    lv_obj_set_style_bg_color(cont, lv_color_hex(0xbbbbbb), LV_STATE_PRESSED);
+
+    lv_obj_t* label = lv_label_create(cont);
+    lv_obj_set_style_text_font(label, (lv_font_t*)&lv_font_montserrat_22, 0);
+    lv_label_set_text(label, "ConfigPwd");
+    lv_obj_center(label);
+
+    ui.config_pwd = cont;
 }
 
 void ScooterSettingView::Switch_UI_Update(bool state)

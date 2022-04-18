@@ -21,11 +21,14 @@ public:
 
         lv_obj_t* label_energy;
         lv_obj_t* energy_dd;
+
+        lv_obj_t* config_pwd;
     } ui;
 
 private:
     void cruise_Create(lv_obj_t* root);
     void energy_Create(lv_obj_t* root);
+    void pwdset_Create(lv_obj_t* root);
 };
 
 }
