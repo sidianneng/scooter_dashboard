@@ -136,6 +136,10 @@ void HalfDuplexSerial_Update(void);
 void HalfDuplexSerial_SetCommitCallback(CommitFunc_t func, void* userData);
 void HalfDuplexSerial_Handle_UI_Cmd(HalfDuplexSerial_BSP_Info_t* info);
 
+/* EEPROM */
+void EEPROM_Init();
+void EEPROM_Handle_UI_Cmd(EEPROM_Info_t* info);
+
 }
 
 #endif

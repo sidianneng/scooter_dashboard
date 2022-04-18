@@ -112,6 +112,15 @@ typedef struct
 	uint8_t energy_recovery;
 }HalfDuplexSerial_BSP_Info_t;
 
+/* EEPROM read or write*/
+typedef struct
+{
+	uint8_t command;
+	uint16_t length;
+	
+	uint8_t pwd_buf[16];
+} EEPROM_Info_t;
+
 }
 
 #endif

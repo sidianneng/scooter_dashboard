@@ -80,6 +80,9 @@
 #define CONFIG_TOUCH_PANEL_RST_PIN  PA1
 #define CONFIG_TOUCH_PANEL_INT_PIN  PA0
 
+/* Eeprom Write Protect Pin */
+#define CONFIG_EEPROM_WP_PIN  PB5
+
 /* Power */
 #define CONFIG_POWER_EN_PIN         PA12
 #define CONFIG_POWER_WAIT_TIME      1000

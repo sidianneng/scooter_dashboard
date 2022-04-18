@@ -71,6 +71,7 @@ void HAL::HAL_Init()
 		HalfDuplexSerial_Init();
 		Scooter_Specify_Hardware_Init();
 
+	  EEPROM_Init();
     //Power_Init();
     Backlight_Init();
     //Encoder_Init();

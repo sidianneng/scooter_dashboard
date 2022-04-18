@@ -3474,6 +3474,11 @@
               <FileType>8</FileType>
               <FilePath>..\USER\HAL\HAL_HalfDuplexSerial.cpp</FilePath>
             </File>
+            <File>
+              <FileName>HAL_Eeprom.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\USER\HAL\HAL_Eeprom.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

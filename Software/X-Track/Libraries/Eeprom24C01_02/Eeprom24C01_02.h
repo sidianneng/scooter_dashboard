@@ -53,7 +53,8 @@ class Eeprom24C01_02
          **********************************************************************/
         Eeprom24C01_02
         (
-            byte deviceAddress
+            byte deviceAddress,
+						uint8_t wp_pin
         );
 
         /******************************************************************//**
@@ -145,6 +146,7 @@ class Eeprom24C01_02
     private:
 
         byte m_deviceAddress;
+		    uint8_t m_wp_pin;
 
         /******************************************************************//**
          * \fn void writePage(

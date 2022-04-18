@@ -72,9 +72,11 @@
  ******************************************************************************/
 Eeprom24C01_02::Eeprom24C01_02
 (
-    byte deviceAddress
+    byte deviceAddress,
+		uint8_t wp_pin
 ){
     m_deviceAddress = deviceAddress;
+		m_wp_pin = wp_pin;
 }
 
 /**************************************************************************//**
@@ -89,6 +91,8 @@ Eeprom24C01_02::Eeprom24C01_02
 void
 Eeprom24C01_02::initialize()
 {
+		pinMode(m_wp_pin, OUTPUT);
+		digitalWrite(m_wp_pin, LOW);
     Wire.begin();
 }
 
