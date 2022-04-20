@@ -92,6 +92,12 @@
     <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanel.h" />
     <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelModel.h" />
     <ClInclude Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelView.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfg.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfgModel.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfgView.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInput.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInputModel.h" />
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInputView.h" />
     <ClInclude Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwd.h" />
     <ClInclude Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdModel.h" />
     <ClInclude Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdView.h" />
@@ -311,6 +317,12 @@
     <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanel.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelModel.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\ScooterPanel\ScooterPanelView.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfg.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfgModel.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfgView.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInput.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInputModel.cpp" />
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInputView.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwd.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdModel.cpp" />
     <ClCompile Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdView.cpp" />

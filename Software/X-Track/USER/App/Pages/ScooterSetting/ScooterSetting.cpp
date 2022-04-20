@@ -166,6 +166,7 @@ void ScooterSetting::onEvent(lv_event_t* event)
     if (code == LV_EVENT_SHORT_CLICKED) {
         if (obj == instance->View.ui.config_pwd) {
             LV_LOG_USER("pwd config pressed\n");
+            instance->Manager->Push("Pages/ScooterPwdCfg");
         }
     }
 }

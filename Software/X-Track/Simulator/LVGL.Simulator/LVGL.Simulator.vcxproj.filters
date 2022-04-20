@@ -412,6 +412,12 @@
     <Filter Include="App\Pages\ScooterPwd">
       <UniqueIdentifier>{3e07fcb1-7588-4670-9f61-e7764eee6c56}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\Pages\ScooterPwdCfg">
+      <UniqueIdentifier>{520d7bcd-a83e-4bf7-a137-9d6f342e213a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\Pages\ScooterPwdInput">
+      <UniqueIdentifier>{cbecc0d3-82ff-4d65-bbad-42a9c0001760}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lvgl\examples\get_started\lv_example_get_started.h">
@@ -1046,6 +1052,24 @@
     </ClInclude>
     <ClInclude Include="..\..\USER\App\Pages\ScooterPwd\ScooterPwdView.h">
       <Filter>App\Pages\ScooterPwd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfg.h">
+      <Filter>App\Pages\ScooterPwdCfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfgModel.h">
+      <Filter>App\Pages\ScooterPwdCfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfgView.h">
+      <Filter>App\Pages\ScooterPwdCfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInput.h">
+      <Filter>App\Pages\ScooterPwdInput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInputModel.h">
+      <Filter>App\Pages\ScooterPwdInput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInputView.h">
+      <Filter>App\Pages\ScooterPwdInput</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -2167,6 +2191,24 @@
     </ClCompile>
     <ClCompile Include="..\..\USER\App\Resource\Image\img_src_switch_on.c">
       <Filter>App\Resource\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfg.cpp">
+      <Filter>App\Pages\ScooterPwdCfg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfgModel.cpp">
+      <Filter>App\Pages\ScooterPwdCfg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdCfg\ScooterPwdCfgView.cpp">
+      <Filter>App\Pages\ScooterPwdCfg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInput.cpp">
+      <Filter>App\Pages\ScooterPwdInput</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInputModel.cpp">
+      <Filter>App\Pages\ScooterPwdInput</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInputView.cpp">
+      <Filter>App\Pages\ScooterPwdInput</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

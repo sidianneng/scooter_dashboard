@@ -88,6 +88,8 @@ void App_Init()
     manager.Install("ScooterSysinfo", "Pages/ScooterSysinfo");
     manager.Install("ScooterSetting", "Pages/ScooterSetting");
     manager.Install("ScooterPwd", "Pages/ScooterPwd");
+    manager.Install("ScooterPwdCfg", "Pages/ScooterPwdCfg");
+    manager.Install("ScooterPwdInput", "Pages/ScooterPwdInput");
 
     manager.SetGlobalLoadAnimType(PageManager::LOAD_ANIM_NONE, 500);
 
