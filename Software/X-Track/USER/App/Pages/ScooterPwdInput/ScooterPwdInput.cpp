@@ -48,13 +48,7 @@ void ScooterPwdInput::onViewWillAppear()
 
 void ScooterPwdInput::onViewDidAppear()
 {
-    uint8_t buf[4];
-    memcpy(buf, this->priv.Stash.ptr, this->priv.Stash.size);
-    for (int i = 0;i < this->priv.Stash.size; ++i) {
-        printf("buf[%d]:%c", i, buf[i]);
-    }
-    lv_textarea_add_text(View.ui.textarea, (char*)buf);
-    printf("\n");
+
 }
 
 void ScooterPwdInput::onViewWillDisappear()
@@ -103,12 +97,13 @@ void ScooterPwdInput::onEvent(lv_event_t* event)
 
     // back to the unlock panel
     if (code == LV_EVENT_READY) {
-        printf("pwd OK~");
+        LV_LOG_USER("pwd OK~");
         //instance->Model.UnlockScooter();
-        uint8_t buf[] = "678";
+        const char* ptr = lv_textarea_get_text(instance->View.ui.textarea);
+        LV_LOG_USER("pwd input data:%s, len:%d\n", ptr, strlen(ptr));
         PageBase::Stash_t test;
-        test.ptr = buf;
-        test.size = sizeof(buf);
+        test.ptr = (void *)ptr;
+        test.size = 16;
         instance->Manager->Pop(&test);
     }
 
@@ -121,10 +116,7 @@ void ScooterPwdInput::onEvent(lv_event_t* event)
             lv_textarea_del_char((lv_obj_t*)ta);
         else if (strcmp(txt, LV_SYMBOL_NEW_LINE) == 0) {
             LV_LOG_USER("Enter was pressed. The current text is: %s", lv_textarea_get_text((lv_obj_t*)ta));
-            if (strcmp(lv_textarea_get_text((lv_obj_t*)ta), "5") == 0) {
-                lv_textarea_set_text((lv_obj_t*)ta, null_txt);
-                lv_event_send((lv_obj_t*)ta, LV_EVENT_READY, NULL);
-            }
+            lv_event_send((lv_obj_t*)ta, LV_EVENT_READY, NULL);
         }
         else
             lv_textarea_add_text((lv_obj_t*)ta, txt);

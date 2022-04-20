@@ -43,15 +43,22 @@ void ScooterPwdCfg::onViewWillAppear()
 
     lv_obj_set_style_bg_color(root, param.color, LV_PART_MAIN);
     timer = lv_timer_create(onTimerUpdate, param.time, this);
+
+    lv_textarea_set_text(View.ui.curpwd_textarea, "");
 }
 
 void ScooterPwdCfg::onViewDidAppear()
 {
-    uint8_t buf[4];
+    uint8_t buf[16];
+    if (this->priv.Stash.size == 0)
+        return;
     memcpy(buf, this->priv.Stash.ptr, this->priv.Stash.size);
+    LV_LOG_USER("cur pwd is:");
     for (int i = 0;i < this->priv.Stash.size; ++i) {
-        printf("bufff[%d]:%c", i, buf[i]);
+        LV_LOG_USER("%c", buf[i]);
     }
+    LV_LOG_USER("\n");
+    LV_LOG_USER("cur pwd len=%d\n", this->priv.Stash.size);
     lv_textarea_add_text(View.ui.curpwd_textarea, (char*)buf);
 }
 
@@ -100,11 +107,7 @@ void ScooterPwdCfg::onEvent(lv_event_t* event)
     if (code == LV_EVENT_SHORT_CLICKED) {
         if (obj == instance->View.ui.curpwd_textarea) {
             LV_LOG_USER("pwd config pressed\n");
-            uint8_t buf[] = "345";
-            PageBase::Stash_t test;
-            test.ptr = buf;
-            test.size = sizeof(buf);
-            instance->Manager->Push("Pages/ScooterPwdInput", &test);
+            instance->Manager->Push("Pages/ScooterPwdInput");
         }
     }
 
