@@ -44,6 +44,15 @@ void ScooterPwdInput::onViewWillAppear()
 
     lv_obj_set_style_bg_color(root, param.color, LV_PART_MAIN);
     timer = lv_timer_create(onTimerUpdate, param.time, this);
+
+    //init the textarea
+    if (this->priv.Stash.size == 0) {
+        LV_LOG_USER("pwd length is 0\n");
+        return;
+    }
+    LV_LOG_USER("input pwd is:%s len:%d\n", this->priv.Stash.ptr, \
+        this->priv.Stash.size);
+    lv_textarea_add_text(View.ui.textarea, (char*)this->priv.Stash.ptr);
 }
 
 void ScooterPwdInput::onViewDidAppear()
@@ -98,13 +107,12 @@ void ScooterPwdInput::onEvent(lv_event_t* event)
     // back to the unlock panel
     if (code == LV_EVENT_READY) {
         LV_LOG_USER("pwd OK~");
-        //instance->Model.UnlockScooter();
         const char* ptr = lv_textarea_get_text(instance->View.ui.textarea);
         LV_LOG_USER("pwd input data:%s, len:%d\n", ptr, strlen(ptr));
-        PageBase::Stash_t test;
-        test.ptr = (void *)ptr;
-        test.size = 16;
-        instance->Manager->Pop(&test);
+        PageBase::Stash_t data_to_pwdcfg;
+        data_to_pwdcfg.ptr = (void *)ptr;
+        data_to_pwdcfg.size = 16;
+        instance->Manager->Pop(&data_to_pwdcfg);
     }
 
     if (code == LV_EVENT_VALUE_CHANGED) {

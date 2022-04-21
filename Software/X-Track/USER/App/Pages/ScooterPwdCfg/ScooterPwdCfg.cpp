@@ -45,21 +45,20 @@ void ScooterPwdCfg::onViewWillAppear()
     timer = lv_timer_create(onTimerUpdate, param.time, this);
 
     lv_textarea_set_text(View.ui.curpwd_textarea, "");
+
+    //init the textarea
+    if (this->priv.Stash.size == 0) {
+        LV_LOG_USER("pwd length is 0\n");
+        return;
+    }
+    LV_LOG_USER("cur pwd is:%s len:%d\n", this->priv.Stash.ptr, \
+        this->priv.Stash.size);
+    lv_textarea_add_text(View.ui.curpwd_textarea, (char*)this->priv.Stash.ptr);
 }
 
 void ScooterPwdCfg::onViewDidAppear()
 {
-    uint8_t buf[16];
-    if (this->priv.Stash.size == 0)
-        return;
-    memcpy(buf, this->priv.Stash.ptr, this->priv.Stash.size);
-    LV_LOG_USER("cur pwd is:");
-    for (int i = 0;i < this->priv.Stash.size; ++i) {
-        LV_LOG_USER("%c", buf[i]);
-    }
-    LV_LOG_USER("\n");
-    LV_LOG_USER("cur pwd len=%d\n", this->priv.Stash.size);
-    lv_textarea_add_text(View.ui.curpwd_textarea, (char*)buf);
+
 }
 
 void ScooterPwdCfg::onViewWillDisappear()
@@ -107,7 +106,11 @@ void ScooterPwdCfg::onEvent(lv_event_t* event)
     if (code == LV_EVENT_SHORT_CLICKED) {
         if (obj == instance->View.ui.curpwd_textarea) {
             LV_LOG_USER("pwd config pressed\n");
-            instance->Manager->Push("Pages/ScooterPwdInput");
+            const char* ptr = lv_textarea_get_text(instance->View.ui.curpwd_textarea);
+            PageBase::Stash_t data_to_pwdinput;
+            data_to_pwdinput.ptr = (void *)ptr;
+            data_to_pwdinput.size = 16;
+            instance->Manager->Push("Pages/ScooterPwdInput", &data_to_pwdinput);
         }
     }
 
