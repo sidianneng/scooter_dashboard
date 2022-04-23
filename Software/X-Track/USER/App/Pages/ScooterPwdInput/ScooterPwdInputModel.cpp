@@ -9,7 +9,7 @@ uint32_t ScooterPwdInputModel::GetData()
 
 void ScooterPwdInputModel::Init()
 {
-    account = new Account("ScooterPwdModel", DataProc::Center(), 0, this);
+    account = new Account("ScooterPwdInputModel", DataProc::Center(), 0, this);
     account->Subscribe("HalfDuplexSerial");
 }
 

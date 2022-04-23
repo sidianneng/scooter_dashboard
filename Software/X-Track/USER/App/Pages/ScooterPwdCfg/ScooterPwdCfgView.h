@@ -15,6 +15,7 @@ namespace Page
 	{
 	public:
 		void Create(lv_obj_t* root);
+		void label_update(const char* buf);
 
 	public:
 		struct
@@ -27,6 +28,8 @@ namespace Page
 			lv_obj_t* setpwd_button;
 			lv_obj_t* cancel_button;
 
+			lv_obj_t* error_label;
+
 			PWD_TA_PRESSED pwd_ta_pressed = TA_PWDNULL;
 		} ui;
 
@@ -35,6 +38,7 @@ namespace Page
 		const char* textarea_name);
 		lv_obj_t* btn_Create(lv_obj_t* root, const char* btn_name, int8_t x_oft, \
 		int8_t y_oft);
+		lv_obj_t* label_Create(lv_obj_t* root, int8_t x_oft, int8_t y_oft);
 	};
 }
 

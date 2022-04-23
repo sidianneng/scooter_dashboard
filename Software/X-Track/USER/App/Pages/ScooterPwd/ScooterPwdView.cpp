@@ -43,7 +43,7 @@ lv_obj_t* ScooterPwdView::Pwd_Keyboard_Create(lv_obj_t* root)
     lv_obj_set_style_text_color(btnm, lv_color_hex(0xffffff), 0);
     lv_obj_set_style_text_font(btnm, (lv_font_t*)&lv_font_montserrat_22, 0);
     lv_obj_set_size(btnm, 200, 150);
-    lv_obj_align(btnm, LV_ALIGN_BOTTOM_MID, 0, -10);
+    lv_obj_align(btnm, LV_ALIGN_BOTTOM_MID, 0, -30);
     lv_obj_clear_flag(btnm, LV_OBJ_FLAG_CLICK_FOCUSABLE); /*To keep the text area focused on button clicks*/
     lv_btnmatrix_set_map(btnm, btnm_map);
 

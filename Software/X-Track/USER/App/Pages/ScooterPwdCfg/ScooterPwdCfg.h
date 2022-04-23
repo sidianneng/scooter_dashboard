@@ -32,11 +32,14 @@ namespace Page
         void AttachEvent(lv_obj_t* obj);
         static void onTimerUpdate(lv_timer_t* timer);
         static void onEvent(lv_event_t* event);
+        void SetDefaultPwd(uint8_t* pwd_buf, uint8_t* pwd_len);
 
     private:
         ScooterPwdCfgView View;
         ScooterPwdCfgModel Model;
         lv_timer_t* timer;
+		uint8_t cur_pwd[PWD_MAX_LEN]={0};
+		uint8_t pwd_len = 0;
 	};
 }
 

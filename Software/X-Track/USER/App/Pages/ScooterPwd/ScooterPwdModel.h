@@ -16,6 +16,7 @@ public:
     void Init();
     void Deinit();
     void UnlockScooter();
+    void GetPwdFromEeprom(uint8_t* pwd_buf, uint8_t *pwd_len);
 private:
     Account* account;
 

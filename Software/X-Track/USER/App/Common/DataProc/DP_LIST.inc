@@ -12,4 +12,5 @@ DP_DEF(TzConv, 0);
 DP_DEF(SysConfig, 0);
 DP_DEF(Scooter, sizeof(HAL::Scooter_Info_t));
 DP_DEF(HalfDuplexSerial, sizeof(HAL::HalfDuplexSerial_BSP_Info_t));
+DP_DEF(Eeprom, sizeof(HAL::EEPROM_Info_t));
 DP_DEF(TrackFilter, 0);

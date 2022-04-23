@@ -2210,6 +2210,12 @@
     <ClCompile Include="..\..\USER\App\Pages\ScooterPwdInput\ScooterPwdInputView.cpp">
       <Filter>App\Pages\ScooterPwdInput</Filter>
     </ClCompile>
+    <ClCompile Include="HAL\HAL_Eeprom.cpp">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Eeprom.cpp">
+      <Filter>App\Common\DataProc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="lvgl\.github\ISSUE_TEMPLATE\bug-report.md">

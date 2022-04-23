@@ -113,9 +113,17 @@ typedef struct
 }HalfDuplexSerial_BSP_Info_t;
 
 /* EEPROM read or write*/
+typedef enum {
+	EEPROM_READ = 0,
+	EEPROM_WRITE
+} EEPROM_CMD;
+
+#define PWD_MAX_LEN 16
+#define DEFAULT_PWD "666"
+
 typedef struct
 {
-	uint8_t command;
+    EEPROM_CMD command;
 	uint16_t length;
 	
 	uint8_t pwd_buf[16];

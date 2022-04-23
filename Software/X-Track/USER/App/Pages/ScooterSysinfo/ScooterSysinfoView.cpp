@@ -10,9 +10,7 @@ void ScooterSysinfoView::Create(lv_obj_t* root)
     lv_obj_remove_style_all(cont);
     lv_obj_set_size(cont, LV_HOR_RES, LV_VER_RES);
     
-    //draw the circle panel
     lv_obj_center(cont);
-    lv_obj_set_style_radius(cont, LV_RADIUS_CIRCLE, 0);
     lv_obj_set_style_bg_opa(cont, LV_OPA_COVER, 0);
     lv_obj_set_style_bg_color(cont, lv_color_hex(0x000000), 0);
 

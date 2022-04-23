@@ -111,14 +111,13 @@ void ScooterPwdInput::onEvent(lv_event_t* event)
         LV_LOG_USER("pwd input data:%s, len:%d\n", ptr, strlen(ptr));
         PageBase::Stash_t data_to_pwdcfg;
         data_to_pwdcfg.ptr = (void *)ptr;
-        data_to_pwdcfg.size = 16;
+        data_to_pwdcfg.size = PWD_MAX_LEN;
         instance->Manager->Pop(&data_to_pwdcfg);
     }
 
     if (code == LV_EVENT_VALUE_CHANGED) {
         void* ta = lv_event_get_user_data(event);
         const char* txt = lv_btnmatrix_get_btn_text(obj, lv_btnmatrix_get_selected_btn(obj));
-        const char* null_txt = "";
 
         if (strcmp(txt, LV_SYMBOL_BACKSPACE) == 0)
             lv_textarea_del_char((lv_obj_t*)ta);

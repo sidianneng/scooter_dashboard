@@ -292,6 +292,7 @@
     <ClCompile Include="..\..\USER\App\App.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DataProc.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Clock.cpp" />
+    <ClCompile Include="..\..\USER\App\Common\DataProc\DP_Eeprom.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_HalfDuplexSerial.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_IMU.cpp" />
     <ClCompile Include="..\..\USER\App\Common\DataProc\DP_MAG.cpp" />
@@ -430,6 +431,7 @@
     <ClCompile Include="HAL\HAL_Audio.cpp" />
     <ClCompile Include="HAL\HAL_Buzz.cpp" />
     <ClCompile Include="HAL\HAL_Clock.cpp" />
+    <ClCompile Include="HAL\HAL_Eeprom.cpp" />
     <ClCompile Include="HAL\HAL_Encoder.cpp" />
     <ClCompile Include="HAL\HAL_GPS.cpp" />
     <ClCompile Include="HAL\HAL_HalfDuplexSerial.cpp" />

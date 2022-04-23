@@ -11,6 +11,8 @@ namespace Page
 	public:
 		void Init();
 		void Deinit();
+    void GetPwdFromEeprom(uint8_t* pwd_buf, uint8_t *pwd_len);
+    void SetPwdToEeprom(uint8_t* pwd_buf, uint8_t pwd_len);
 
 	private:
 		Account* account;
