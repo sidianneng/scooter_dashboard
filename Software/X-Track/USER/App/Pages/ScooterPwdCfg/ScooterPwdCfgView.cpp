@@ -26,7 +26,7 @@ lv_obj_t* ScooterPwdCfgView::pwd_textarea_Create(lv_obj_t* root, int8_t x_oft, i
     lv_obj_set_style_bg_color(pwd_textarea, lv_color_hex(0xffffff), 0);
     lv_obj_set_style_bg_opa(pwd_textarea, LV_OPA_COVER, 0);
     lv_obj_set_style_text_font(pwd_textarea, (lv_font_t*)&lv_font_montserrat_22, 0);
-    lv_textarea_set_password_mode(pwd_textarea, false);
+    lv_textarea_set_password_mode(pwd_textarea, true);
     lv_textarea_set_one_line(pwd_textarea, true);
     lv_obj_set_width(pwd_textarea, lv_pct(40));
     lv_obj_align(pwd_textarea, LV_ALIGN_CENTER, 0, 0);

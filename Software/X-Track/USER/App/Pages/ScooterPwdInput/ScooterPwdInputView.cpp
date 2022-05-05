@@ -24,7 +24,7 @@ lv_obj_t* ScooterPwdInputView::Pwd_Textarea_Create(lv_obj_t* root)
     lv_obj_t* ta = lv_textarea_create(root);
     lv_obj_set_style_text_font(ta, (lv_font_t*)&lv_font_montserrat_22, 0);
     lv_obj_set_style_text_color(ta, lv_color_hex(0xffffff), 0);
-    lv_textarea_set_password_mode(ta, false);
+    lv_textarea_set_password_mode(ta, true);
     lv_textarea_set_one_line(ta, true);
     lv_obj_align(ta, LV_ALIGN_TOP_MID, 100, 10);
     //lv_textarea_add_text(ta, "345");
