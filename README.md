@@ -1,59 +1,87 @@
-# X-TRACK
-> 开源GPS自行车码表。
-> 
-> 拥有可显示实时位置的离线地图。
-> 
-> 支持记录和显示实时轨迹以及导出标准GPX格式的轨迹文件。
-> 
-> 全新设计的["页面生命周期管理"](https://github.com/FASTSHIFT/X-TRACK/tree/main/Software/X-Track/USER/App/Utils/PageManager)和["消息订阅发布框架"](https://github.com/FASTSHIFT/X-TRACK/tree/main/Software/X-Track/USER/App/Utils/DataCenter)。
->
-> 演示视频：https://www.bilibili.com/video/BV1GB4y1K7VV
+# 滑板车定制仪表盘
 
-![image](https://github.com/FASTSHIFT/X-TRACK/blob/main/Images/%E5%9C%B0%E5%9B%BE.jpg)
+## 1 项目概述
 
-## GUI
-> [LVGL V8](https://github.com/lvgl/lvgl)
+该仪表盘基于ninebot的E22滑板车进行设计。
 
-## 硬件配置
-* 1.主控: AT32F403ACGU7 (主频:240MHz RAM:224KB ROM:1MB)
-* 2.屏幕: ST7789 IPS 1.54inch SPI接口 240x240分辨率 60Hz刷新率
-* 3.储存器: Micro SD CARD 32GB 
-* 4.输入设备: 旋转编码器
-* 5.RTC: MCU内置RTC时钟
-* 6.加速度计: LSM6DSM (支持硬件计步输出)
-* 7.地磁计: LIS3MDL
-* 8.GPS: ATGM336H (BDS + GPS + GLONASS + GALILEO + QZSS + SBAS)
-* 9.电池: Li-ion 3.7V 683030 700mAh
-* 10.电源管理: LP5907-3.3 + MCP73831
-* 11.外壳: 3D打印 光固化
+**在兼容原始仪表盘的所有功能的前提下，同时将官方手机端的功能也集成到了其中。**
 
-## 功能
-* 1.支持速度、距离、时间、卡路里、航向显示
-* 2.拥有**离线地图**，支持显示实时位置，支持缩放
-* 3.支持计步
-* 4.支持经纬度、海拔显示
-* 5.支持RTC自动根据GPS校准
-* 6.支持记录轨迹，可导出[GPX格式](https://zh.wikipedia.org/wiki/GPX)的文件
-* 7.支持掉电自动保存数据(JSON格式文件)
-* 8.四小时续航 (持续工作，始终亮屏)
-* 9.支持在[PC模拟器](https://github.com/FASTSHIFT/X-TRACK/tree/main/Software/X-Track/Simulator)模拟，脱离硬件调试(配置为**Release x86**)
-* 10.支持显示实时轨迹
-* 11.待续...
+这样极大的提高了使用的便捷性。
 
-## 实物演示
-### 测速
-https://user-images.githubusercontent.com/26767803/120889722-1f8d8e80-c631-11eb-8294-df79f151dedb.mp4
+## 2 功能介绍
+该仪表盘共计有4个界面，分别对应不同的功能：
+### 2.1 主界面
+主界面中100%还原了官方仪表盘的原始状态。支持显示的内容如下：
+* 实时速度
+* 电量情况
+* 充电情况
+* 速度单位
+* 蓝牙状态
+* 运动模式
+* 错误提示
 
-### 历史轨迹显示([GPXSee](https://github.com/tumic0/GPXSee))
-![image](https://github.com/FASTSHIFT/X-TRACK/blob/main/Images/%E8%BF%90%E5%8A%A8%E8%BD%A8%E8%BF%B9.png)
+图片如下：
 
-## 致谢
-> 感谢[@davidce](https://www.geek-workshop.com/home.php?mod=space&uid=204)贡献的参考设计“[自制基于arduino的GPS地图导航系统3.0](https://www.geek-workshop.com/thread-8835-1-1.html)”。
+![mainpage](./Images/%E6%BB%91%E6%9D%BF%E8%BD%A6%E4%BB%AA%E8%A1%A8%E7%9B%98%E5%9B%BE%E7%89%87/mainpage.PNG)
 
-> 感谢[@W-Mai](https://github.com/W-Mai)改进的[地图下载链接生成工具](https://github.com/W-Mai/XLocateDownloader/releases/download/1.0.0/MapDownloader.zip)、[地图下载器](https://github.com/W-Mai/XLocateDownloader)、[LVGL图片转换器(Python版)](https://github.com/W-Mai/lvgl_image_converter)、[批量文件重命名工具](https://github.com/W-Mai/filename_renamer)。
 
-> 感谢[@Trigger-CN](https://github.com/Trigger-CN)的[UI设计](https://github.com/FASTSHIFT/X-TRACK/tree/main/ArtDesign)。
+### 2.2 上锁解锁界面
+该界面可以通过长按触摸屏实现对滑板车的上锁解锁，避免了以往手机app连接的繁琐操作。
 
-> 感谢[@MouriNaruto](https://github.com/MouriNaruto)的LVGL Visual Studio模拟器[lv_sim_visual_studio](https://github.com/lvgl/lv_sim_visual_studio)。
+图片如下：
 
-> 感谢[@dj140](https://github.com/dj140)编写[地图下载教程](https://github.com/FASTSHIFT/X-TRACK/blob/main/Tools/README.md)。
+![unlock](./Images/%E6%BB%91%E6%9D%BF%E8%BD%A6%E4%BB%AA%E8%A1%A8%E7%9B%98%E5%9B%BE%E7%89%87/unlock.PNG)
+![pwd](./Images/%E6%BB%91%E6%9D%BF%E8%BD%A6%E4%BB%AA%E8%A1%A8%E7%9B%98%E5%9B%BE%E7%89%87/pwd.PNG)
+
+### 2.3 续航数据显示界面
+该界面显示了如下信息：
+* 剩余续航
+* 剩余电量
+* 总里程数
+
+图片如下：
+
+![mileage](./Images/%E6%BB%91%E6%9D%BF%E8%BD%A6%E4%BB%AA%E8%A1%A8%E7%9B%98%E5%9B%BE%E7%89%87/mileage.PNG)
+
+### 2.4 设置界面
+该界面实现了滑板车的一些配置功能，具体如下：
+
+* 开启关闭定速巡航
+* 设置能量回收强度
+* 设置上锁解锁密码
+
+相关图片如下：
+
+![setting](./Images/%E6%BB%91%E6%9D%BF%E8%BD%A6%E4%BB%AA%E8%A1%A8%E7%9B%98%E5%9B%BE%E7%89%87/setting.PNG)
+![config_pwd](./Images/%E6%BB%91%E6%9D%BF%E8%BD%A6%E4%BB%AA%E8%A1%A8%E7%9B%98%E5%9B%BE%E7%89%87/config_pwd.PNG)
+
+## 3 关键性功能原理介绍
+该仪表盘中有两个核心功能点：
+
+* 原始仪表盘数据解析
+* 原始通讯协议数据解析
+
+### 3.1 原始仪表盘数据解析
+原始仪表盘的数据是通过蓝牙芯片控制一个数码管驱动芯片(TM1650)实现的，其中使用I2C作为通讯接口。我们通过解析其I2C通讯的数据内容，结合数码管芯片的数据手册。这样就能获取到完整的仪表盘数据了。
+
+示意图如下：
+
+![display_principle](./Images/%E6%BB%91%E6%9D%BF%E8%BD%A6%E4%BB%AA%E8%A1%A8%E7%9B%98%E5%9B%BE%E7%89%87/display_principle.PNG)
+
+
+### 3.2 原始通讯协议数据解析
+原始仪表盘和主板之间通过单线串口实现数据通讯，我们通过将新仪表盘连接到它们之间，通过截取和转发它们间的通讯内容，在必要时加入我们需要的数据，这样就能实现对滑板车的更多功能控制。
+
+示意图如下：
+
+![communication_principle](./Images/%E6%BB%91%E6%9D%BF%E8%BD%A6%E4%BB%AA%E8%A1%A8%E7%9B%98%E5%9B%BE%E7%89%87/communication_principle.PNG)
+
+## 4 鸣谢
+该项目的软件框架是基于[X-TRACK](https://github.com/FASTSHIFT/X-TRACK)进行二次开发的。
+
+X-TRACK是一个很不错的开源项目，其代码逻辑实现非常清晰和优美，另外其处理issue的速度也非常快。在我开发的过程中提供了很多帮助。在这里对其表示衷心的感谢。希望该项目能越来越好。
+
+
+***如果使用过程中有任何问题，欢迎在issue中进行提问~***
+
+
